@@ -1,0 +1,56 @@
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">点击导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{{ url('main_index') }}" class="navbar-brand">拿铁味的摩卡</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ url('main_index') }}">LatteMocha</a>
+                </li>
+                <li>
+                    <a href="{{ url('main_mood') }}">碎言碎语</a>
+                </li>
+                <li>
+                    <a href="{{ url('main_life') }}">慢生活</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">学无止境 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ url('learn_bootstrap') }}">Bootstrap</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('learn_javascript') }}">JavaScript</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('learn_linux') }}">Linux</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('learn_php') }}">PHP</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('learn_ruby') }}">Ruby</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ url('main_about') }}">About</a>
+                </li>
+                <li>
+                    <a href="{{ url('main_guestBook') }}">留言板</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" onclick="">登录</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>

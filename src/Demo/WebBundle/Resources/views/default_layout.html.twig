@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}MochaCake{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    {% stylesheets
+        '@DemoWebBundle/Resources/public/bootstrap/css/bootstrap.min.css'
+        '@DemoWebBundle/Resources/public/css/doc.min.css'
+        '@DemoWebBundle/Resources/public/css/blog.css'
+        filter='cssrewrite'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% block stylesheets %}
+    {% endblock %}
+
+</head>
+<body>
+<div id="navigation">
+    {{ render(controller('DemoWebBundle:Default:navigation')) }}
+</div>
+
+{% block content %}
+{% endblock %}
+
+<div id="footer">
+    {% include 'DemoWebBundle:Public:footer.html.twig' %}
+</div>
+{% javascripts
+    '@DemoWebBundle/Resources/public/js/jQuery-2.1.1.min.js'
+    '@DemoWebBundle/Resources/public/bootstrap/js/bootstrap.min.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

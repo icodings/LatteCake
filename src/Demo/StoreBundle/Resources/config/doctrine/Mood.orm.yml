@@ -1,0 +1,20 @@
+Demo\StoreBundle\Entity\Mood:
+    type: entity
+    table: mocha_mood
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+
+    fields:
+        mood_author:
+            type: integer
+        mood_time:
+            type: integer
+        mood_content:
+            type: text
+        mood_title:
+            type: text

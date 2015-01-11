@@ -1,0 +1,18 @@
+{% if related %}
+  <div class="row-fluid">
+    {% for post in related %}
+      <div class="span4">
+        <p>
+          <a href="{{ path('_blog_view', { 'slug' : post.slug }) }}">{{ post }}</a></p>
+        {% if post.hasImage %}
+          <a href="{{ path('_blog_view', { 'slug' : post.slug }) }}">
+            <img src="{{ post.image | imagine_filter('list_widen_200') }}" alt="{{ post }}"/>
+          </a>
+        {% endif %}
+        <p>
+      </div>
+    {% else %}
+      <p>No hay elementos</p>
+    {% endfor %}
+  </div>
+{% endif %}

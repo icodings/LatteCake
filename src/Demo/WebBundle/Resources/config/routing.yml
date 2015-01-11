@@ -1,0 +1,4 @@
+#demo_web_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: DemoWebBundle:Default:index }
+

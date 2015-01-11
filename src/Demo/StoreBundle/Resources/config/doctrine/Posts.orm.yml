@@ -1,0 +1,33 @@
+Demo\StoreBundle\Entity\Posts:
+    type: entity
+    table: mocha_posts
+    repositoryClass: Demo\StoreBundle\Entity\PostsRepository
+
+    manyToOne:
+        Users:
+            targetEntity: Users
+            inversedBy: Posts
+            joinColumn:
+                name: post_author
+                referencedColumnName: id
+
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+    fields:
+        post_title:
+            type: string
+        post_time:
+            type: integer
+        post_content:
+            type: text
+        post_desc:
+            type: string
+        post_author:
+            type: integer
+        post_action:
+            type: integer

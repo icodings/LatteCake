@@ -1,0 +1,30 @@
+Demo\StoreBundle\Entity\Users:
+    type: entity
+    table: mocha_users
+    repositoryClass: Demo\StoreBundle\Entity\UsersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+
+    oneToMany:
+        Posts:
+            targetEntity: Posts
+            mappedBy: Users
+
+    fields:
+        user_login:
+            type: string
+        user_niceName:
+            type: string
+        user_pass:
+            type: string
+        user_time:
+            type: integer
+        user_email:
+            type: string
+
+

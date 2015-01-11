@@ -1,0 +1,53 @@
+{% extends "DemoWebBundle::default_layout.html.twig" %}
+
+{% block content %}
+
+    <div class="bs-docs-masthead">
+        <div class="container">
+            <div class="blog-header">
+                <p class="lead blog-description">删删写写，虽无法行云流水，却也可碎言碎语。</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="" id="content" role="main">
+        <div class="container">
+            <div id="timeline-1">
+                <div class="row bs-callout">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                        <div class="timeline-container">
+                            <div class="timeline-label">
+                                <span class="label label-primary arrowed-in-right label-lg">
+                                    <b>碎言碎语</b>
+                                </span>
+                            </div>
+                            {% for item in moods %}
+
+                                <div class="timeline-item clearfix">
+                                    <div class="timeline-info">
+                                        <i class="timeline-indicator icon-food btn btn-info no-hover"></i>
+                                    </div>
+
+                                    <div class="widget-box transparent">
+                                        <div class="widget-header widget-header-small hidden"></div>
+                                        <div class="widget-body">
+                                            <div class="widget-main">
+                                                {{ item.getMoodContent }}
+                                                {#<img src="http://img.pinfun.cn/upload/2012-02-10/115797_1328862160_aOcBjwus_b.jpg" class="img-rounded"/>#}
+                                                <div class="pull-right">
+                                                    <i class="icon-time bigger-110"></i>
+                                                    {{ item.getMoodTime|date("Y/m/d H:i") }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

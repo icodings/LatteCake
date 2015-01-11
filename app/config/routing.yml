@@ -1,0 +1,11 @@
+demo_store:
+    resource: "@DemoStoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+demo_web:
+    resource: "@DemoWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+hello:
+    resource: "@DemoWebBundle/Controller"
+    type: annotation
