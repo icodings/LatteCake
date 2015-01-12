@@ -20,18 +20,29 @@
                                 <h2 class="blog-post-title">{{ item.getPostTitle }}</h2>
                             </a>
                             <p class="blog-post-meta">{{ item.getPostTime|date("Y-m-d H:i:s") }} <a href="#">{{ item.getUsers.getUserNiceName }}</a></p>
-
-                            <p>{{ item.getPostDesc }}</p>
+                            <div class="bs-callout bs-callout-lighter">
+                                {{ item.getPostDesc }}
+                            </div>
 
                         </div>
                     {% endfor %}
 
-                    <nav>
-                        <ul class="pager">
-                            <li><a href="{{ url('learn_bootstrap', {'page': page - 1 }) }}">上一页</a></li>
-                            <li><a href="{{ url('learn_bootstrap', {'page': page + 1 }) }}">下一页</a></li>
+                    {#<nav>#}
+                        {#<ul class="pager">#}
+                            {#<li><a href="{{ url('learn_bootstrap', {'page': page - 1 }) }}">上一页</a></li>#}
+                            {#<li><a href="{{ url('learn_bootstrap', {'page': page + 1 }) }}">下一页</a></li>#}
 
-                            <li>{{ page }} / {{ total }}页</li>
+                            {#<li>{{ page }} / {{ total }}页</li>#}
+                        {#</ul>#}
+                    {#</nav>#}
+
+                    <nav>
+                        <ul class="pagination">
+                            <li><a href="{{ url('learn_bootstrap', {'page': page - 1 }) }}">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+
+                            <li><a href="{{ url('learn_bootstrap', {'page': page + 1 }) }}">&raquo;</a></li>
                         </ul>
                     </nav>
 
