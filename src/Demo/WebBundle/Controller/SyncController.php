@@ -21,6 +21,21 @@ use GuzzleHttp\Client;
  */
 class SyncController extends Controller
 {
+
+    private function getUrlContent($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        $data = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        return ($httpcode>=200 && $httpcode<300) ? $data : false;
+    }
+
     /**
      * 同步评论数据
      * @Route("/comments")
@@ -37,10 +52,15 @@ class SyncController extends Controller
         $url = "http://api.duoshuo.com/log/list.json";
 
 
+//        $response = $this->getUrlContent($url);
+//print_r( $response );die;
+
         // Create a client to work with the Twitter API
-        $client = new Client('https://api.twitter.com/{version}', array(
-            'version' => '1.1'
-        ));
+        $client = new Client();
+
+        $req = $client->get($url, ['verify' => false]);
+
+        print_r( $req );die;
 
 // Sign all requests with the OauthPlugin
 //        $client->addSubscriber(new Guzzle\Plugin\Oauth\OauthPlugin(array(
