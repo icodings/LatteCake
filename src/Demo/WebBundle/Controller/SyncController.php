@@ -51,14 +51,13 @@ class SyncController extends Controller
 
         $url = "http://api.duoshuo.com/log/list.json";
 
-
-//        $response = $this->getUrlContent($url);
-//print_r( $response );die;
+        $response = $this->getUrlContent($url);
+print_r( $response );die;
 
         // Create a client to work with the Twitter API
         $client = new Client();
 
-        $req = $client->get($url, ['verify' => false]);
+        $req = $client->get('http://api.duoshuo.com/log/list.json', ['verify' => false]);
 
         print_r( $req );die;
 
@@ -113,4 +112,7 @@ die;
         $logger->info(__CLASS__.'|'.__FUNCTION__."|action={$action}|signature={$signature}");
         return new JsonResponse($response);
     }
+
+
+
 } 
