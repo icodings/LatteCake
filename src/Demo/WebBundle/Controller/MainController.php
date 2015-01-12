@@ -13,6 +13,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Demo\StoreBundle\Entity\Mood;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Class MainController
  * @Route("/")
@@ -20,6 +22,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class MainController extends Controller
 {
+
+    const PAGE_NUM = 15;
 
     /**
      * 首页
@@ -58,14 +62,24 @@ class MainController extends Controller
     /**
      * 碎言碎语
      * @Route("/mood", name="main_mood")
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function moodAction()
+    public function moodAction( Request $request )
     {
-        $repository = $this->getDoctrine()
-            ->getRepository('DemoStoreBundle:Mood');
+        $logger = $this->get('logger');
+
+        $page = $request->get( 'page' );
+        $first = ($page - 1) * self::PAGE_NUM;
+
+        $logger->info(__CLASS__.'|'.__FUNCTION__."|page={$page}|first={$first}");
+
+        $repository = $this->getDoctrine()->getRepository('DemoStoreBundle:Mood');
+
         $moods = $repository->createQueryBuilder('m')
             ->orderBy('m.id', 'DESC')
+            ->setFirstResult($first)
+            ->setMaxResults(self::PAGE_NUM)
             ->getQuery()->getResult();
 
         $data = array
