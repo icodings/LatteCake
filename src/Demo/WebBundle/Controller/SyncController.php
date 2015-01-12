@@ -10,6 +10,7 @@ namespace Demo\WebBundle\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -24,14 +25,20 @@ class SyncController extends Controller
      * 同步评论数据
      * @Route("/comments")
      * @param Request $request
+     * @return JsonResponse
      */
     public function commentsAction( Request $request )
     {
-        // http://api.duoshuo.com/log/list.json
+        // http://api.duoshuo.com/log/list.json?short_name=api&secret=c9d92470f13da30f2da8f48a4f4e167a
         $action     = $request->get('action');
         $signature  = $request->get('signature');
 
-        echo 'action:'.$action.'<br />';
-        echo 'signature:'.$signature.'<br />';die;
+        $response = array
+        (
+            'action'    => $action,
+            'signature' => $signature
+        );
+
+        return new JsonResponse($response);
     }
 } 
