@@ -15,6 +15,7 @@ use Demo\StoreBundle\Entity\Mood;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+
 /**
  * Class MainController
  * @Route("/")
@@ -69,7 +70,7 @@ class MainController extends Controller
     {
         $logger = $this->get('logger');
 
-        $page = $request->get( 'page' );
+        $page = $request->get( 'page' ) ? $request->get('page') : 1;
         $first = ($page - 1) * self::PAGE_NUM;
 
         $logger->info(__CLASS__.'|'.__FUNCTION__."|page={$page}|first={$first}");
