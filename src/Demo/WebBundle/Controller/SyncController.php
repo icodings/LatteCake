@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use GuzzleHttp\Client;
+//use GuzzleHttp\Client;
 use Demo\StoreBundle\Entity\Users;
 use Demo\StoreBundle\Entity\Comments;
 /**
