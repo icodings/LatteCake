@@ -51,6 +51,8 @@ class SyncController extends Controller
         $action     = $request->get('action');
         $signature  = $request->get('signature');
 
+        $baseDecode = base64_decode($signature);
+
         $repository = $this->getDoctrine()->getRepository('DemoStoreBundle:Comments');
 
         $comment = $repository->createQueryBuilder('c')
@@ -149,7 +151,7 @@ class SyncController extends Controller
         $req = $client->get('http://api.duoshuo.com/log/list.json', ['verify' => false]);
         */
 
-        $logger->err(__CLASS__.'|'.__FUNCTION__."|action={$action}|signature={$signature}");
+        $logger->err(__CLASS__.'|'.__FUNCTION__."|action={$action}|signature={$signature}|baseDecode={$baseDecode}");
         return new JsonResponse($response);
     }
 
