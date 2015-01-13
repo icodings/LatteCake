@@ -75,6 +75,13 @@ class SyncController extends Controller
 
         $logs .= "|code={$result->code}";
 
+
+        $context = [
+            'action'    => $action,
+            'signature' => $signature,
+            'apiCode'   => $result->code
+        ];
+
         if( $result->code == 0  )
         {
             foreach( $result->response as $key => $row )
@@ -138,6 +145,9 @@ class SyncController extends Controller
                 }
             }
 
+        }else
+        {
+            $context['response'] = $response;
         }
 
         $response = array
@@ -151,11 +161,7 @@ class SyncController extends Controller
         $req = $client->get('http://api.duoshuo.com/log/list.json', ['verify' => false]);
         */
 
-        $context = [
-            'action'    => $action,
-            'signature' => $signature,
-            'apiCode'   => $result->code
-        ];
+
 
         $logger->info(__CLASS__.':'.__FUNCTION__, $context);
 //        $logger->log(200, __CLASS__.'|'.__FUNCTION__."|action={$action}|signature={$signature}{$logs}");
