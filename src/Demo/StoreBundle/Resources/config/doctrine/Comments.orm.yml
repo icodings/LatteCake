@@ -1,0 +1,39 @@
+Demo\StoreBundle\Entity\Comments:
+    type: entity
+    table: mocha_comments
+    repositoryClass: Demo\StoreBundle\Entity\CommentsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+
+    fields:
+        comment_logId:
+            type: bigint
+        comment_userId:
+            type: integer
+        comment_action:
+            type: string
+        comment_postId:
+            type: bigint
+        comment_threadId:
+            type: bigint
+        comment_threadKey:
+            type: integer
+        comment_ip:
+            type: string
+        comment_createdAt:
+            type: string
+        comment_message:
+            type: string
+        comment_status:
+            type: string
+        comment_parentId:
+            type: bigint
+        comment_type:
+            type: integer
+        comment_agent:
+            type: string
