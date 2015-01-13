@@ -31,3 +31,5 @@ Demo\StoreBundle\Entity\Posts:
             type: integer
         post_action:
             type: integer
+        post_readNum:
+            type: integer

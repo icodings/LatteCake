@@ -220,4 +220,32 @@ class Posts
     {
         return $this->Users;
     }
+    /**
+     * @var integer
+     */
+    private $post_readNum;
+
+
+    /**
+     * Set post_readNum
+     *
+     * @param integer $postReadNum
+     * @return Posts
+     */
+    public function setPostReadNum($postReadNum)
+    {
+        $this->post_readNum = $postReadNum;
+
+        return $this;
+    }
+
+    /**
+     * Get post_readNum
+     *
+     * @return integer 
+     */
+    public function getPostReadNum()
+    {
+        return $this->post_readNum;
+    }
 }

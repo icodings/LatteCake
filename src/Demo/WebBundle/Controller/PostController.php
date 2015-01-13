@@ -84,6 +84,11 @@ class PostController extends Controller
             throw $this->createNotFoundException('No product found for id '.$request->get('id'));
         }
 
+        $postInfo->setPostReadNum($postInfo->getPostReadNum() + 1);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
         $data = array
         (
             'postInfo' => $postInfo,
