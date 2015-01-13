@@ -10,7 +10,9 @@
                     <div class="bs-docs-section">
                         <div class="page-header">
                             <h1 class="blog-title">{{ postInfo.getPostTitle }}</h1>
-                            <p class="blog-post-meta">{{ postInfo.getPostTime|date("Y-m-d H:i:s") }} &nbsp;&nbsp;<a href="#">{{ postInfo.getUsers.getUserNiceName }}</a></p>
+                            <p class="blog-post-meta">{{ postInfo.getPostTime|date("Y-m-d H:i:s") }} &nbsp;&nbsp;<a href="#">{{ postInfo.getUsers.getUserNiceName }}</a>
+                                阅读(<strong>{{ postInfo.getPostReadNum }}</strong>)
+                            </p>
                         </div>
                         <div class="bs-callout bs-callout-info">
                             {{ postInfo.getPostContent }}
