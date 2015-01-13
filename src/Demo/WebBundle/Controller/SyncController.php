@@ -155,7 +155,7 @@ class SyncController extends Controller
         $req = $client->get('http://api.duoshuo.com/log/list.json', ['verify' => false]);
         */
 
-        $logger->info(__CLASS__.':'.__FUNCTION__, $context);
+        $logger->info(__CLASS__.'::'.__FUNCTION__, $context);
 //        $logger->log(200, __CLASS__.'|'.__FUNCTION__."|action={$action}|signature={$signature}{$logs}");
         return new JsonResponse($response);
     }
