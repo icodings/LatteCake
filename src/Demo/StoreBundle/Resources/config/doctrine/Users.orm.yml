@@ -26,5 +26,11 @@ Demo\StoreBundle\Entity\Users:
             type: integer
         user_email:
             type: string
+        user_key:
+            type: string
+        user_url:
+            type: string
+        user_duoId:
+            type: string
 
 

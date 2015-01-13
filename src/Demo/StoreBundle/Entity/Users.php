@@ -209,4 +209,88 @@ class Users
     {
         return $this->Posts;
     }
+    /**
+     * @var string
+     */
+    private $user_key;
+
+    /**
+     * @var string
+     */
+    private $user_url;
+
+    /**
+     * @var string
+     */
+    private $user_duoId;
+
+
+    /**
+     * Set user_key
+     *
+     * @param string $userKey
+     * @return Users
+     */
+    public function setUserKey($userKey)
+    {
+        $this->user_key = $userKey;
+
+        return $this;
+    }
+
+    /**
+     * Get user_key
+     *
+     * @return string 
+     */
+    public function getUserKey()
+    {
+        return $this->user_key;
+    }
+
+    /**
+     * Set user_url
+     *
+     * @param string $userUrl
+     * @return Users
+     */
+    public function setUserUrl($userUrl)
+    {
+        $this->user_url = $userUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get user_url
+     *
+     * @return string 
+     */
+    public function getUserUrl()
+    {
+        return $this->user_url;
+    }
+
+    /**
+     * Set user_duoId
+     *
+     * @param string $userDuoId
+     * @return Users
+     */
+    public function setUserDuoId($userDuoId)
+    {
+        $this->user_duoId = $userDuoId;
+
+        return $this;
+    }
+
+    /**
+     * Get user_duoId
+     *
+     * @return string 
+     */
+    public function getUserDuoId()
+    {
+        return $this->user_duoId;
+    }
 }
