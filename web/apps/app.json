@@ -16,7 +16,7 @@
      * This value is needed when build to resolve your application's dependencies if it requires server-side resources
      * that are not accessible via file system protocol.
      */
-    "url": null,
+    "url": "http://demo.lattecake.local/apps/",
 
     /**
      * List of all JavaScript assets in the right execution order.
@@ -131,5 +131,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "560b1656-a000-4fbb-b7fd-0ce7fbff212b"
+    "id": "7280208c-9c91-4960-9637-a956429757d0"
 }

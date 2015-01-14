@@ -43,10 +43,10 @@ Ext.define('LatteCake.controller.MoodController', {
         }
     },
 
-    launch: function()
-    {
-        Ext.getStore('MoodStore').load();
-    },
+//    launch: function()
+//    {
+//        Ext.getStore('MoodStore').load();
+//    },
 
     /**
      * 保存数据

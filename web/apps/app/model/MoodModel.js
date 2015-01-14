@@ -4,10 +4,10 @@
 Ext.define('LatteCake.model.MoodModel', {
     extend: 'Ext.data.Model',
     config: {
-        idProperty: 'moodId',
+//        idProperty: 'moodId',
         fields: [
-            { name: 'moodTitle', type: 'string' },
             { name: 'moodId', type: 'int' },
+            { name: 'moodTitle', type: 'string' },
             { name: 'moodContent', type: 'string' }
         ],
         validations: [

@@ -14,6 +14,7 @@ Ext.define('LatteCake.store.MoodStore', {
         }
 
     },
+    autoLoad: true,
     listeners: {
         load: function(store, records, successful, operation, eOpts){
             if( records.length < 1 )
