@@ -45,6 +45,7 @@ Ext.define('LatteCake.view.MoodForm', {
                         maxLength: 10
                     },
                     {
+                        height: 300,
                         labelWidth: '20%',
                         xtype: 'textareafield',
                         name: 'moodContent',
