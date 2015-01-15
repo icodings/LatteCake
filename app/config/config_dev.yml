@@ -31,6 +31,10 @@ monolog:
 
 assetic:
     use_controller: true
+    java: C:/Windows/System32/java.exe
+    filters:
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.jar"
 
 #swiftmailer:
 #    delivery_address: me@example.com
