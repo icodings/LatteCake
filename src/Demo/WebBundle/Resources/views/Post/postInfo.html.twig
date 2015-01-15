@@ -1,5 +1,7 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
 
+{% block pageDescription %} {{ postInfo.getPostTitle }} {% endblock %}
+
 {% block content %}
     <main class="" id="content">
         <div class="container">
