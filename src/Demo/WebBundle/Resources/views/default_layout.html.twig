@@ -24,6 +24,14 @@
     {{ render(controller('DemoWebBundle:Default:navigation')) }}
 </div>
 
+<div class="bs-docs-masthead">
+    <div class="container">
+        {% block mainHeaderContainer %}
+
+        {% endblock %}
+    </div>
+</div>
+
 {% block content %}
 {% endblock %}
 
