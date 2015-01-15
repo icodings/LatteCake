@@ -12,6 +12,7 @@ namespace Demo\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Demo\StoreBundle\Entity\Mood;
+use Demo\StoreBundle\Entity\Posts;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -48,6 +49,40 @@ class MainController extends Controller
             'form'  => $form->createView()
         );
         return $this->render('DemoWebBundle:Main:index.html.twig', $data );
+    }
+
+    /**
+     * @Route("/learn", name="main_learn", defaults={"page":1}, requirements={"page"="\d+"})
+     * @param $page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function learnAction($page, Request $request)
+    {
+        $first = ($page - 1) * self::PAGE_NUM;
+        $repository = $this->getDoctrine()
+            ->getRepository('DemoStoreBundle:Posts');
+        $posts = $repository->createQueryBuilder('p')
+            ->where('p.post_action = 7')
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->setMaxResults( self::PAGE_NUM )
+            ->setFirstResult( $first )
+            ->getResult();
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT COUNT(p.id) AS rowsNum FROM DemoStoreBundle:Posts AS p');
+        $resultCount = $query->getResult();
+
+        $data = array
+        (
+            'title' => 'Bootstrap',
+            'posts' => $posts,
+            'label' => array('default', 'primary', 'success', 'info', 'warning', 'danger'),
+            'total' => ceil( $resultCount[0]['rowsNum'] / self::PAGE_NUM ),
+            'page'  => $page
+        );
+        return $this->render('DemoWebBundle:Main:learn.html.twig', $data );
     }
 
     /**
