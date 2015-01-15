@@ -7,8 +7,8 @@
     <meta name="keywords" content="个人博客,个人技术博客,拿铁蛋糕,拿铁味的摩卡" />
     <meta name="description" content="{% block pageDescription %}拿铁味的蛋糕，是一名码农，擅长各种技术。{% endblock %}" />
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" />
     {% stylesheets
+        '@DemoWebBundle/Resources/public/bootstrap/css/bootstrap.min.css'
         '@DemoWebBundle/Resources/public/css/doc.min.css'
         '@DemoWebBundle/Resources/public/css/blog.css'
         filter='cssrewrite,yui_css'
@@ -30,14 +30,12 @@
 <div id="footer">
     {% include 'DemoWebBundle:Public:footer.html.twig' %}
 </div>
-{#{% javascripts
+{% javascripts
     '@DemoWebBundle/Resources/public/js/jQuery-2.1.1.min.js'
     '@DemoWebBundle/Resources/public/bootstrap/js/bootstrap.min.js'
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
-{% endjavascripts %}#}
-<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+{% endjavascripts %}
 
 {% block javascript %}
 {% endblock %}
