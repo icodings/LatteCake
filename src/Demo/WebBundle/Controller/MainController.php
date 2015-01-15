@@ -52,6 +52,7 @@ class MainController extends Controller
     }
 
     /**
+     * 学无止境
      * @Route("/learn", name="main_learn", defaults={"page":1}, requirements={"page"="\d+"})
      * @param $page
      * @param Request $request
