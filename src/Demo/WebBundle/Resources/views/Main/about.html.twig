@@ -1,9 +1,13 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
 {% block pageTitle %} - 我{% endblock %}
 
-{% block mainHeaderContainer %}
-    <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">我</span>
-    <p>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</p>
+{% block bannerContainer %}
+    <div class="bs-docs-masthead">
+        <div class="container">
+            <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">我</span>
+            <p>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</p>
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
