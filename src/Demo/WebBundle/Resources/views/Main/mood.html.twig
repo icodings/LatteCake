@@ -2,12 +2,12 @@
 {% block pageTitle %} - 碎言碎语{% endblock %}
 
 {% block LC_stylesheets %}
-    {% stylesheets
-        '@DemoWebBundle/Resources/public/css/jBootstrapPage.css'
-        filter="yui_css"
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    {#{% stylesheets#}
+        {#'@DemoWebBundle/Resources/public/css/jBootstrapPage.css'#}
+        {#filter="yui_css"#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
 {% endblock %}
 
 {% block bannerContainer %}
@@ -65,10 +65,10 @@
     </main>
 {% endblock %}
 {% block LC_javascript %}
-    {% javascripts
-        '@DemoWebBundle/Resources/public/js/jBootstrapPage.js'
-    %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {#{% javascripts#}
+        {#'@DemoWebBundle/Resources/public/js/jBootstrapPage.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
 
-    {% endjavascripts %}
+    {#{% endjavascripts %}#}
 {% endblock %}
