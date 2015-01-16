@@ -18,6 +18,11 @@
 
     {% block LC_stylesheets %}
     {% endblock %}
+
+    <script type="text/javascript">
+        var baseInfo = {};
+        baseInfo.baseUrl = '{{ url('main_index') }}';
+    </script>
 </head>
 <body>
 <div id="navigation">

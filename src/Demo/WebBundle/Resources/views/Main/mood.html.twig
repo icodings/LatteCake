@@ -24,29 +24,10 @@
                                     <b>碎言碎语</b>
                                 </span>
                             </div>
-                            {% for item in moods %}
+                            <div id="mood-list">
 
-                                <div class="timeline-item clearfix">
-                                    <div class="timeline-info">
-                                        <i class="timeline-indicator icon-food btn btn-info no-hover"></i>
-                                    </div>
+                            </div>
 
-                                    <div class="widget-box transparent">
-                                        <div class="widget-header widget-header-small hidden"></div>
-                                        <div class="widget-body">
-                                            <div class="widget-main">
-                                                {{ item.getMoodContent }}
-                                                {#<img src="http://img.pinfun.cn/upload/2012-02-10/115797_1328862160_aOcBjwus_b.jpg" class="img-rounded"/>#}
-                                                <div class="pull-right">
-                                                    <i class="icon-time bigger-110"></i>
-                                                    {{ item.getMoodTime|date("Y/m/d H:i") }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            {% endfor %}
                         </div>
                         <nav>
                             <ul id="pagination" class="pagination pagination-sm">
@@ -59,42 +40,80 @@
         </div>
     </main>
 {% endblock %}
+{% if total > 0 %}
+    {% block LC_javascript %}
+        {% javascripts
+            '@DemoWebBundle/Resources/public/js/bootstrap-paginator.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript">
+            var moodList = [];
+            $(function(){
+                mood.loadMoods(1);
+                var options = {
+                    currentPage: 1,
+                    totalPages: {{ total }},
+                    size:"normal",
+                    alignment:"center",
+                    itemTexts: function (type, page, current) {
+                        switch (type) {
+                            case "first":
+                                return "<<";
+                            case "prev":
+                                return "<";
+                            case "next":
+                                return ">";
+                            case "last":
+                                return ">>";
+                            case "page":
+                                return  page;
+                        }
+                    },
+                    onPageClicked: function (e, originalEvent, type, page)
+                    {
+                        mood.loadMoods(page);
+                    }
+                }
+                $('#pagination').bootstrapPaginator(options);
+            });
+            var mood = {
+                loadMoods: function( page )
+                {
+                    if( !moodList[page] )
+                    {
+                        $.get(baseInfo.baseUrl + 'mood/list?page=' + page, function(response)
+                        {
+                            if(response.success == true)
+                            {
+                                var strHtml = '';
+                                $.each(response.data, function(k, item)
+                                {
+                                    strHtml += '<div class="timeline-item clearfix">' +
+                                            '<div class="timeline-info"><i class="timeline-indicator icon-food btn btn-info no-hover"></i></div>' +
+                                            '<div class="widget-box transparent"><div class="widget-header widget-header-small hidden"></div><div class="widget-body">' +
+                                            '<div class="widget-main">' +
+                                            item.moodContent +
+                                            '<div class="pull-right"><i class="icon-time bigger-110"></i>' +
+                                            item.moodTime + '</div></div></div></div></div>';
+                                });
+                                $('#mood-list').html(strHtml);
+                                moodList[page] = strHtml;
+                            }else
+                            {
+//                        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+//                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+//                                <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+//                        </div>
+                            }
+                        }, 'json');
+                    }else
+                    {
+                        $('#mood-list').html(moodList[page]);
+                    }
 
-{% block LC_javascript %}
-    {% javascripts
-        '@DemoWebBundle/Resources/public/js/bootstrap-paginator.js'
-    %}
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    {#<script type="text/javascript" src="http://storage.lattecake.com/static/js/bootstrap-paginator.min.js?Expires=1421761762&OSSAccessKeyId=Ig0PboHFbW3uGmJw&Signature=21QmJ9pMv7r6pUBmkd%2FkvnMR8LU%3D"></script>#}
-    {#<script type="text/javascript">#}
-        {#$(function(){#}
-            {#var options = {#}
-                {#currentPage: 3,#}
-                {#totalPages: 10,#}
-                {#size:"normal",#}
-                {#alignment:"center",#}
-                {#itemTexts: function (type, page, current) {#}
-                    {#switch (type) {#}
-                        {#case "first":#}
-                            {#return "第一页";#}
-                        {#case "prev":#}
-                            {#return "<";#}
-                        {#case "next":#}
-                            {#return ">";#}
-                        {#case "last":#}
-                            {#return "最后页";#}
-                        {#case "page":#}
-                            {#return  page;#}
-                    {#}#}
-                {#},#}
-                {#onPageClicked: function (e, originalEvent, type, page) {#}
-                    {#alert("type:" + type + ",Page:" + page);#}
-                {#}#}
-            {#}#}
-
-            {#$('#pagination').bootstrapPaginator(options);#}
-
-        {#})#}
-    {#</script>#}
-{% endblock %}
+                }
+            };
+        </script>
+    {% endblock %}
+{% endif %}

@@ -111,18 +111,23 @@ class MainController extends Controller
 
         $logger->info(__CLASS__.'|'.__FUNCTION__."|page={$page}|first={$first}");
 
-        $repository = $this->getDoctrine()->getRepository('DemoStoreBundle:Mood');
+        /*$repository = $this->getDoctrine()->getRepository('DemoStoreBundle:Mood');
 
         $moods = $repository->createQueryBuilder('m')
             ->orderBy('m.id', 'DESC')
             ->setFirstResult($first)
             ->setMaxResults(self::PAGE_NUM)
-            ->getQuery()->getResult();
+            ->getQuery()->getResult();*/
+
+
+        $em = $this->getDoctrine()->getManager();
+        $totalObj = $em->createQuery('SELECT COUNT(m.id) total FROM DemoStoreBundle:Mood m')->getResult();
 
         $data = array
         (
-            'moods' => $moods,
-            'page'  => $page
+            'moods' => [],
+            'page'  => $page,
+            'total' => ceil($totalObj[0]['total'] / 15)
         );
 
         return $this->render('DemoWebBundle:Main:mood.html.twig', $data );
