@@ -1,6 +1,15 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
 {% block pageTitle %} - 碎言碎语{% endblock %}
 
+{% block LC_stylesheets %}
+    {% stylesheets
+        '@DemoWebBundle/Resources/public/css/jBootstrapPage.css'
+        filter="yui_css"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block bannerContainer %}
 
     <div class="bs-docs-masthead">
@@ -48,9 +57,34 @@
 
                             {% endfor %}
                         </div>
+                        <ul class="pagination"></ul>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+{% endblock %}
+{% block LC_javascript %}
+    {% javascripts
+        '@DemoWebBundle/Resources/public/js/jBootstrapPage.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            createPage(10, 3, 100);
+
+            function createPage(pageSize, buttons, total) {
+                $(".pagination").jBootstrapPage({
+                    pageSize : pageSize,
+                    total : total,
+                    maxPageButton:buttons,
+                    onPageClicked: function(obj, pageIndex)
+                    {
+                        console.log( pageIndex );
+                    }
+                });
+            }
+        });
+    </script>
+    {% endjavascripts %}
 {% endblock %}

@@ -121,7 +121,8 @@ class MainController extends Controller
 
         $data = array
         (
-            'moods' => $moods
+            'moods' => $moods,
+            'page'  => $page
         );
 
         return $this->render('DemoWebBundle:Main:mood.html.twig', $data );
