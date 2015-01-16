@@ -69,22 +69,6 @@
         '@DemoWebBundle/Resources/public/js/jBootstrapPage.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-    <script type="text/javascript">
-        $(function(){
-            createPage(10, 3, 100);
 
-            function createPage(pageSize, buttons, total) {
-                $(".pagination").jBootstrapPage({
-                    pageSize : pageSize,
-                    total : total,
-                    maxPageButton:buttons,
-                    onPageClicked: function(obj, pageIndex)
-                    {
-                        console.log( pageIndex );
-                    }
-                });
-            }
-        });
-    </script>
     {% endjavascripts %}
 {% endblock %}
