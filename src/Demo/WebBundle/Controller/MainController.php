@@ -121,7 +121,7 @@ class MainController extends Controller
 
         $data = array
         (
-            'moods' => $moods,
+            'moods' => [],
             'page'  => $page
         );
 

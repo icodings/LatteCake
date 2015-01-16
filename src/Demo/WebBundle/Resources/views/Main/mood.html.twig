@@ -1,15 +1,6 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
 {% block pageTitle %} - 碎言碎语{% endblock %}
 
-{% block LC_stylesheets %}
-    {#{% stylesheets#}
-        {#'@DemoWebBundle/Resources/public/css/jBootstrapPage.css'#}
-        {#filter="yui_css"#}
-    {#%}#}
-    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
-    {#{% endstylesheets %}#}
-{% endblock %}
-
 {% block bannerContainer %}
 
     <div class="bs-docs-masthead">
@@ -57,18 +48,53 @@
 
                             {% endfor %}
                         </div>
-                        <ul class="pagination"></ul>
+                        <nav>
+                            <ul id="pagination" class="pagination pagination-sm">
+
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 {% endblock %}
-{% block LC_javascript %}
-    {#{% javascripts#}
-        {#'@DemoWebBundle/Resources/public/js/jBootstrapPage.js'#}
-    {#%}#}
-    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
 
-    {#{% endjavascripts %}#}
+{% block LC_javascript %}
+    {% javascripts
+        '@DemoWebBundle/Resources/public/js/bootstrap-paginator.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script type="text/javascript" src="http://storage.lattecake.com/static/js/bootstrap-paginator.min.js?Expires=1421761762&OSSAccessKeyId=Ig0PboHFbW3uGmJw&Signature=21QmJ9pMv7r6pUBmkd%2FkvnMR8LU%3D"></script>#}
+    {#<script type="text/javascript">#}
+        {#$(function(){#}
+            {#var options = {#}
+                {#currentPage: 3,#}
+                {#totalPages: 10,#}
+                {#size:"normal",#}
+                {#alignment:"center",#}
+                {#itemTexts: function (type, page, current) {#}
+                    {#switch (type) {#}
+                        {#case "first":#}
+                            {#return "第一页";#}
+                        {#case "prev":#}
+                            {#return "<";#}
+                        {#case "next":#}
+                            {#return ">";#}
+                        {#case "last":#}
+                            {#return "最后页";#}
+                        {#case "page":#}
+                            {#return  page;#}
+                    {#}#}
+                {#},#}
+                {#onPageClicked: function (e, originalEvent, type, page) {#}
+                    {#alert("type:" + type + ",Page:" + page);#}
+                {#}#}
+            {#}#}
+
+            {#$('#pagination').bootstrapPaginator(options);#}
+
+        {#})#}
+    {#</script>#}
 {% endblock %}
