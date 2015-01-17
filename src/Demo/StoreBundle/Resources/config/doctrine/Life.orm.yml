@@ -1,0 +1,34 @@
+Demo\StoreBundle\Entity\Life:
+    type: entity
+    table: mocha_life
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+
+    fields:
+        life_title:
+            type: string
+        life_content:
+            type: text
+        life_time:
+            type: integer
+        life_author:
+            type: integer
+        life_source:
+            type: string
+        life_read:
+            type: integer
+        life_keyword:
+            type: string
+        life_tag:
+            type: string
+        life_lastTime:
+            type: integer
+        life_image:
+            type: string
+        life_desc:
+            type: string

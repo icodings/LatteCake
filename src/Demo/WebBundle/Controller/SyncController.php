@@ -112,6 +112,15 @@ class SyncController extends Controller
                 $commentInfo = $commentDoctrine->findOneBy(array( 'comment_logId' => $row->log_id ));
                 if( !$commentInfo && $row->action != 'delete' )
                 {
+                    if( is_string($meta->thread_key) && $meta->thread_key != 'guestBook' )
+                    {
+                        $postArr = explode('_', $meta->thread_key);
+                        $postId  = $postArr[1];
+                    }else
+                    {
+                        $postId = $meta->thread_key;
+                    }
+
                     $comments->setCommentLogId($row->log_id);
                     $comments->setCommentAction($row->action);
                     $comments->setCommentUserId($row->user_id);
@@ -125,6 +134,7 @@ class SyncController extends Controller
                     $comments->setCommentStatus($meta->status);
                     $comments->setCommentThreadId($meta->thread_id);
                     $comments->setCommentAgent($meta->agent);
+                    $comments->setCommentArticleId($postId);
                     $em->persist($comments);
 
                     $em->flush();

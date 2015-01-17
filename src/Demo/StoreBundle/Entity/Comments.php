@@ -388,4 +388,32 @@ class Comments
     {
         return $this->comment_agent;
     }
+    /**
+     * @var integer
+     */
+    private $comment_articleId;
+
+
+    /**
+     * Set comment_articleId
+     *
+     * @param integer $commentArticleId
+     * @return Comments
+     */
+    public function setCommentArticleId($commentArticleId)
+    {
+        $this->comment_articleId = $commentArticleId;
+
+        return $this;
+    }
+
+    /**
+     * Get comment_articleId
+     *
+     * @return integer 
+     */
+    public function getCommentArticleId()
+    {
+        return $this->comment_articleId;
+    }
 }

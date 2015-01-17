@@ -37,3 +37,5 @@ Demo\StoreBundle\Entity\Comments:
             type: integer
         comment_agent:
             type: string
+        comment_articleId:
+            type: integer

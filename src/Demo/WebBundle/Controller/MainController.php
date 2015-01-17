@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Demo\StoreBundle\Entity\Mood;
 use Demo\StoreBundle\Entity\Posts;
+use Demo\StoreBundle\Entity\Life;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,6 +27,7 @@ class MainController extends Controller
 {
 
     const PAGE_NUM = 15;
+    const PAGE_NUM10 = 10;
 
     /**
      * 首页
@@ -104,21 +106,7 @@ class MainController extends Controller
      */
     public function moodAction( Request $request )
     {
-        $logger = $this->get('logger');
-
-        $page = $request->get( 'page', 1 );
-        $first = ($page - 1) * self::PAGE_NUM;
-
-        $logger->info(__CLASS__.'|'.__FUNCTION__."|page={$page}|first={$first}");
-
-        /*$repository = $this->getDoctrine()->getRepository('DemoStoreBundle:Mood');
-
-        $moods = $repository->createQueryBuilder('m')
-            ->orderBy('m.id', 'DESC')
-            ->setFirstResult($first)
-            ->setMaxResults(self::PAGE_NUM)
-            ->getQuery()->getResult();*/
-
+//        $logger = $this->get('logger');
 
         $em = $this->getDoctrine()->getManager();
         $totalObj = $em->createQuery('SELECT COUNT(m.id) total FROM DemoStoreBundle:Mood m')->getResult();
@@ -126,7 +114,6 @@ class MainController extends Controller
         $data = array
         (
             'moods' => [],
-            'page'  => $page,
             'total' => ceil($totalObj[0]['total'] / 15)
         );
 
@@ -135,12 +122,37 @@ class MainController extends Controller
 
     /**
      * 慢生活
-     * @Route("/life", name="main_life")
+     * @Route("/life/{page}", name="main_life", defaults={"page":1}, requirements={"page"="\d+"})
+     * @param $page
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function lifeAction()
+    public function lifeAction( $page, Request $request )
     {
-        return $this->render('DemoWebBundle:Main:life.html.twig' );
+        $first = ($page - 1) * self::PAGE_NUM10;
+
+        $em = $this->getDoctrine()->getManager();
+        $list = $em->createQuery("SELECT l.id lId,l.life_desc,l.life_author,l.life_time,l.life_image,l.life_title,u.id uId,u.user_niceName,u.user_url
+              FROM DemoStoreBundle:Life l
+              INNER JOIN DemoStoreBundle:Users u WITH l.life_author = u.id
+              ORDER BY l.life_time DESC")
+            ->setMaxResults( self::PAGE_NUM10 )
+            ->setFirstResult( $first )
+            ->getResult();
+        if( !$list )
+            throw $this->createNotFoundException('No product found');
+
+        $resultCount = $em->createQuery('SELECT COUNT(l.id) rowsNum FROM DemoStoreBundle:Life l')->getResult();
+
+        $response = array
+        (
+            'lifeList'  => $list,
+            'page'      => $page,
+            'totalPage' => ceil( $resultCount[0]['rowsNum'] / self::PAGE_NUM10 )
+        );
+
+        return $this->render('DemoWebBundle:Main:life.html.twig', $response );
     }
 
     /**

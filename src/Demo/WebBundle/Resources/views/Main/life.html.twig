@@ -15,8 +15,68 @@
 {% block content %}
 
     <main class="" id="content" role="main">
+
         <div class="container">
 
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">玫瑰虽美 但花下荆棘丛生
+                        <small>So...</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('main_index') }}">首页</a>
+                        </li>
+                        <li class="active">慢生活</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            {% if lifeList %}
+            {% for item in lifeList %}
+                <div class="row">
+                    <div class="col-md-1 text-center">
+                        <p>{{ item.life_time|date("Y/m/d H:i") }}</p>
+                    </div>
+                    <div class="col-md-5" style="height: 240px; overflow-y: hidden;">
+                        <a href="{{ url('life_lifeInfo', {'id': item.lId, 'page': page}) }}">
+                            <img class="img-responsive img-hover" src="{{ item.life_image }}" alt=""/>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>
+                            <a href="{{ url('life_lifeInfo', {'id': item.lId, 'page': page}) }}">{{ item.life_title }}</a>
+                        </h3>
+                        <p>作者: <a href="{{ item.user_url }}" target="_blank">{{ item.user_niceName }}</a>
+                        </p>
+                        <p>{{ item.life_desc }}</p>
+                        <a class="btn btn-primary" href="{{ url('life_lifeInfo', {'id': item.lId, 'page': page}) }}">阅读 <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <hr>
+            {% endfor %}
+            {% endif %}
+
+            {% if totalPage > 1 %}
+            <!-- Pager -->
+            <div class="row">
+                <ul class="pager">
+                    {% if page > 1 %}
+                    <li class="previous"><a href="{{ url('main_life', {'page': page -1}) }}">← 上页</a></li>
+                    {% endif %}
+                    <li class="next"><a href="{{ url('main_life', {'page': page + 1}) }}">下页 →</a></li>
+                </ul>
+            </div>
+            <hr>
+            <!-- /.pager -->
+            {% endif %}
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>某一人似曾相识、某一刻似曾经历</p>
+                </div>
+            </div>
         </div>
     </main>
 {% endblock %}
