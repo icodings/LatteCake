@@ -9,6 +9,7 @@
 namespace Demo\WebBundle\Controller;
 
 
+use Demo\StoreBundle\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\BrowserKit\Request;
@@ -31,13 +32,21 @@ class LifeController extends Controller
      * @param $lifeInfo
      * @ParamConverter("life", class="DemoStoreBundle:Life")
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
     public function lifeInfoAction($page, Life $lifeInfo )
     {
+        if( !$lifeInfo )
+            throw $this->createNotFoundException('No product found');
+
+        $userInfo = $this->getDoctrine()
+            ->getRepository('DemoStoreBundle:Users')->find($lifeInfo->getLifeAuthor());
+
         $data = array
         (
             'lifeInfo' => $lifeInfo,
-            'page'     => $page
+            'page'     => $page,
+            'userInfo' => $userInfo
         );
         return $this->render('DemoWebBundle:Life:lifeInfo.html.twig', $data );
     }
