@@ -1,68 +1,195 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
-
+{% block LC_stylesheets %}
+    <link rel="stylesheet" href="http://storage.lattecake.com/static/css/font-awesome.min.css"/>
+{% endblock %}
 {% block bannerContainer %}
-    <div class="bs-docs-masthead">
+    {#<div class="bs-docs-masthead">
         <div class="container">
             <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">Lc</span>
             <p class="lead">拿铁味的摩卡是最受欢迎的个人技术博客。</p>
         </div>
-    </div>
+    </div>#}
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide One');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 2</h2>
+                </div>
+            </div>
+            <div class="item active">
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 3</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
 {% endblock %}
 
 {% block content %}
     <main class="" id="content" role="main">
         <div class="container">
-            <div class="row row-offcanvas row-offcanvas-right bs-callout">
 
-                <div class="col-xs-12 col-sm-9">
-                    <p class="pull-right visible-xs">
-                        <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                    </p>
-                    <div class="jumbotron">
-                        <h1>Hello, world!</h1>
-                        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+            <!-- Marketing Icons Section -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Welcome to Modern Business
+                    </h1>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.2.0</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                            <a href="#" class="btn btn-default">Learn More</a>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                        <div class="col-xs-6 col-lg-4">
-                            <h2>Heading</h2>
-                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-                        </div><!--/.col-xs-6.col-lg-4-->
-                    </div><!--/row-->
-                </div><!--/.col-xs-12.col-sm-9-->
-
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
-                        <a href="#" class="list-group-item">Link</a>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                            <a href="#" class="btn btn-default">Learn More</a>
+                        </div>
                     </div>
-                </div><!--/.sidebar-offcanvas-->
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
+                            <a href="#" class="btn btn-default">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
 
-            </div><!--/row-->
+            <!-- Portfolio Section -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">Portfolio Heading</h2>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="portfolio-item.html">
+                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- /.row -->
 
-            {#<div class="alert alert-danger" role="alert">{{ form_errors(form) }}</div>#}
-            {#<form action="{{ path('post_addPost') }}" method ="post" {{ form_enctype(form) }}>#}
-                {#{{ form_widget(form) }}#}
-            {#</form>#}
+            <!-- Features Section -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-header">Modern Business Features</h2>
+                </div>
+                <div class="col-md-6">
+                    <p>The Modern Business template by Start Bootstrap includes:</p>
+                    <ul>
+                        <li><strong>Bootstrap v3.2.0</strong>
+                        </li>
+                        <li>jQuery v1.11.0</li>
+                        <li>Font Awesome v4.1.0</li>
+                        <li>Working PHP contact form with validation</li>
+                        <li>Unstyled page elements for easy customization</li>
+                        <li>17 HTML pages</li>
+                    </ul>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive" src="http://placehold.it/700x450" alt="">
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <hr>
+
+            <!-- Call to Action Section -->
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>某一人似曾相识、某一刻似曾经历</p>
+                </div>
+            </div>
+
         </div>
 
     </main>
+{% endblock %}
+{% block LC_javascript %}
+
+    <script type="text/javascript">
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>
+
 {% endblock %}
