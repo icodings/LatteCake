@@ -110,15 +110,13 @@ class SyncController extends Controller
                     $userArr[] = $users->getId();
                 }
                 $commentInfo = $commentDoctrine->findOneBy(array( 'comment_logId' => $row->log_id ));
-                if( !$commentInfo && $row->action != 'delete' )
+                if( !$commentInfo && in_array($row->action, array('create', 'approve')) )
                 {
+                    $postId = $meta->thread_key;
                     if( is_string($meta->thread_key) && $meta->thread_key != 'guestBook' )
                     {
                         $postArr = explode('_', $meta->thread_key);
                         $postId  = $postArr[1];
-                    }else
-                    {
-                        $postId = $meta->thread_key;
                     }
 
                     $comments->setCommentLogId($row->log_id);
