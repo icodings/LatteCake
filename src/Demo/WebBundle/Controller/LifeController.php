@@ -42,6 +42,11 @@ class LifeController extends Controller
         $userInfo = $this->getDoctrine()
             ->getRepository('DemoStoreBundle:Users')->find($lifeInfo->getLifeAuthor());
 
+        $lifeInfo->setLifeRead($lifeInfo->getLifeRead() + 1);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
         $data = array
         (
             'lifeInfo' => $lifeInfo,
