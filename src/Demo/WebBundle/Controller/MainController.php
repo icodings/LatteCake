@@ -140,6 +140,7 @@ class MainController extends Controller
             ->setMaxResults( self::PAGE_NUM10 )
             ->setFirstResult( $first )
             ->getResult();
+
         if( !$list )
             throw $this->createNotFoundException('No product found');
 
