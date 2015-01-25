@@ -118,7 +118,7 @@ print_r($fileSystem->getClientOriginalName());die;
             $life->setLifeAuthor(1);
             $life->setLifeContent($lifeContent);
             $life->setLifeDesc($lifeDesc);
-            $life->setLifeImage('http://pic2.zhimg.com/ce24ebddfba9643a28da42c7044e19e7.jpg');
+            $life->setLifeImage('http://pic3.zhimg.com/236ab287d61dc6b172a0a6b0dc3295de.jpg');
             $life->setLifeLastTime(time());
             $life->setLifeTime(time());
 

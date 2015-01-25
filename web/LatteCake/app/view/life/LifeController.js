@@ -19,11 +19,11 @@ Ext.define('LatteCake.view.life.LifeController', {
                 params: subData,
                 success: function(form, action) {
                     var response = action.result;
-                    console.log(response);
+                    Ext.MsgTip.msg(response.message);
+                    form.reset();
                 },
                 failure: function(form, action) {
-                    console.log(action);
-//                    Ext.Msg.alert('失败', ));
+                    Ext.Msg.alert('失败', action.result.message);
                 }
             });
         }

@@ -55,7 +55,7 @@ Ext.define('LatteCake.view.life.LifeEditor', {
                     name: 'lifeDesc',
                     invalidText: '标题最长255个字符.',
                     emptyText: '请输入文章简介',
-                    maxLength: 128
+                    maxLength: 255
                 },
                 {
                     xtype: 'textarea',
