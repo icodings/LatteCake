@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>添加内容</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    {#{% stylesheets#}
+    {#'@DemoAdminBundle/Resources/public/kindEditor/themes/default/default.css'#}
+    {#'@DemoAdminBundle/Resources/public/kindEditor/plugins/code/prettify.css'#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+
+
+    {#{% javascripts#}
+    {#'@DemoAdminBundle/Resources/public/kindEditor/kindeditor-all-min.js'#}
+    {#'@DemoAdminBundle/Resources/public/kindEditor/lang/zh_CN.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+    <link rel="stylesheet" href="/static/kindEditor/themes/default/default.css"/>
+    <link rel="stylesheet" href="/static/kindEditor/plugins/code/prettify.css"/>
+
+    <script type="text/javascript" src="/static/kindEditor/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="/static/kindEditor/lang/zh_CN.js"></script>
+
+    <script type="text/javascript">
+        var baseInfo = {
+            baseUrl: '{{ url('main_index') }}'
+        };
+        KindEditor.ready(function(K) {
+            var editor1 = K.create('textarea[name="content1"]', {
+                cssPath : '/static/kindEditor/themes/default/default.css',
+                uploadJson : '../php/upload_json.php',
+                fileManagerJson : '../php/file_manager_json.php',
+                allowFileManager : true,
+                afterCreate : function() {
+                    var self = this;
+                    K.ctrl(document, 13, function() {
+                        self.sync();
+                        K('form[name=example]')[0].submit();
+                    });
+                    K.ctrl(self.edit.doc, 13, function() {
+                        self.sync();
+                        K('form[name=example]')[0].submit();
+                    });
+                }
+            });
+            prettyPrint();
+        });
+    </script>
+</head>
+<body>
+<form name="example" method="post" action="demo.php">
+    <textarea name="content1" style="min-width:700px;min-height:200px;visibility:hidden;"><?php echo htmlspecialchars($htmlData); ?></textarea>
+    <br />
+    <input type="submit" name="button" value="提交内容" /> (提交快捷键: Ctrl + Enter)
+</form>
+</body>
+</html>
