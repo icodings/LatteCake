@@ -109,31 +109,39 @@ print_r($fileSystem->getClientOriginalName());die;
 
         if( !empty( $lifeContent ) && !empty($lifeDesc) && !empty( $lifeTitle ))
         {
-            $life = new Life();
-
-            $em = $this->getDoctrine()->getManager();
-
-            $life->setLifeTitle($lifeTitle);
-            $life->setLifeRead(1);
-            $life->setLifeAuthor(1);
-            $life->setLifeContent($lifeContent);
-            $life->setLifeDesc($lifeDesc);
-            $life->setLifeImage('http://pic3.zhimg.com/236ab287d61dc6b172a0a6b0dc3295de.jpg');
-            $life->setLifeLastTime(time());
-            $life->setLifeTime(time());
-
-            $em->persist($life);
-            $em->flush();
+//            $life = new Life();
+//
+//            $em = $this->getDoctrine()->getManager();
+//
+//            $life->setLifeTitle($lifeTitle);
+//            $life->setLifeRead(1);
+//            $life->setLifeAuthor(1);
+//            $life->setLifeContent($lifeContent);
+//            $life->setLifeDesc($lifeDesc);
+//            $life->setLifeImage('http://pic3.zhimg.com/236ab287d61dc6b172a0a6b0dc3295de.jpg');
+//            $life->setLifeLastTime(time());
+//            $life->setLifeTime(time());
+//            $life->setLifeSource($lifeSource);
+//            $em->persist($life);
+//            $em->flush();
         }
         $response = [
             'success'   => true,
             'errorCode' => '',
             'message'   => '操作成功',
-            'data'      => array
-            (
-                'lifeTitle' => $lifeTitle
-            )
+            'data'      => $lifeContent
         ];
         return new JsonResponse($response);
+    }
+
+    /**
+     * 上传图片
+     * @Route("/uploadImage")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function uploadImageAction( Request $request )
+    {
+        return new JsonResponse();
     }
 } 

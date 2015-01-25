@@ -69,6 +69,9 @@ Ext.define('LatteCake.view.life.LifeEditor', {
                                 if (KindEditor) {
                                     me.kEditor = KindEditor.create('#content-inputEl', {
                                         cssPath: '/static/kindEditor/plugins/code/prettify.css',
+                                        uploadJson : baseInfo.baseUrl + 'admin/image/uploadImage',
+                                        imageUploadJson: baseInfo.baseUrl + 'admin/image/uploadImage',
+                                        imageSizeLimit: '3MB',
                                         resizeType: 0,
                                         resizeMode: 0,
                                         allowFileManager: true,

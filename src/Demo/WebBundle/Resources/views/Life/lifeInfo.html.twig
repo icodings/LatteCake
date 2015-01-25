@@ -55,6 +55,9 @@
                         {{ lifeInfo.getLifeContent }}
                     {% endautoescape %}
                     </div>
+                    {% if lifeInfo.getLifeSource %}
+                        来自: <a href="{{ lifeInfo.getLifeSource }}" target="_blank">{{ lifeInfo.getLifeSource }}</a>
+                    {% endif %}
                     <hr>
 
                     <!-- Blog Comments -->
