@@ -1,3 +1,7 @@
+#demo_admin:
+#    resource: "@DemoAdminBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 demo_store:
     resource: "@DemoStoreBundle/Resources/config/routing.yml"
     prefix:   /
@@ -8,4 +12,7 @@ demo_web:
 
 hello:
     resource: "@DemoWebBundle/Controller"
+    type: annotation
+admin:
+    resource: "@DemoAdminBundle/Controller"
     type: annotation

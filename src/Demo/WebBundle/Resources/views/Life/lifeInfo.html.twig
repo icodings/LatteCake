@@ -51,7 +51,9 @@
 
                     <!-- Post Content -->
                     <div class="bs-callout bs-callout-info">
-                    {{ lifeInfo.getLifeContent }}
+                    {% autoescape false %}
+                        {{ lifeInfo.getLifeContent }}
+                    {% endautoescape %}
                     </div>
                     <hr>
 
@@ -165,4 +167,13 @@
 
         </div>
     </main>
+
+{% endblock %}
+
+{% block LC_javascript %}
+    {#<script type="text/javascript" src="/static/kindEditor/kindeditor-all-min.js"></script>#}
+    {#<script charset="utf-8" src="/static/kindEditor/plugins/code/prettify.js"></script>#}
+    {#<script>#}
+        {#prettyPrint();#}
+    {#</script>#}
 {% endblock %}

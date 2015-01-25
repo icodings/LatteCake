@@ -8,10 +8,26 @@ Ext.define('LatteCake.Application', {
     
     name: 'LatteCake',
 
-    stores: [
-        // TODO: add global / shared stores here
+    views: [
+        'LatteCake.view.Header',
+        'LatteCake.view.Navigation',
+        'LatteCake.view.ContentPanel',
+        'LatteCake.view.life.LifeList',
+        'LatteCake.view.life.LifeEditor'
     ],
-    
+
+    requires: [
+        'Ext.window.MessageBox'
+    ],
+
+    stores: [
+        'NavigationStore'
+    ],
+
+    controllers: [
+        'LatteCake.controller.MainController'
+    ],
+
     launch: function () {
         // TODO - Launch the application
     }
