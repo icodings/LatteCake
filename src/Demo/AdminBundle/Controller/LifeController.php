@@ -43,12 +43,36 @@ class LifeController extends Controller
     public function newLifeAction( Request $request )
     {
         $lifeTitle   = $request->get('lifeTitle');
-        $lifeImage   = $request->get('lifeImage');
+        $lifeImage   = $request->files;
         $lifeDesc    = $request->get('lifeDesc');
         $lifeContent = $request->get('lifeContent');
         $lifeSource  = $request->get('lifeSource');
         $lifeKeyword = $request->get('lifeKeyword');
         $lifeTag     = $request->get('lifeTag');
+
+
+        if( !$request->files )
+        {
+            die;
+        }
+        $fileUrl = 'http://demo.lattecake.local/uploads/images/life/';
+        $dir = 'E:\website\Git\LatteCake\web\uploads\images\life\\'.date('Y/m/');
+        foreach ($request->files as $file)
+        {
+            $name = md5( $file->getClientOriginalName(). microtime() ).'.'.$file->guessExtension();
+            $fileUrl = $fileUrl.date('Y/m/').$name;
+            $fs = new Filesystem();
+            if( !$fs->exists( $dir ) )
+            {
+                try {
+                    $fs->mkdir( $dir );
+                } catch (IOExceptionInterface $e) {
+                    echo "An error occurred while creating your directory at ".$e->getPath();
+                }
+            }
+            $file->move( $dir,  $name );
+            break;
+        }
 
 /*        $fileSystem = $this->get('');
 print_r( $fileSystem );die;
