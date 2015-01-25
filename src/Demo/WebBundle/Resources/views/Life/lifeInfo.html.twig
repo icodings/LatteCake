@@ -50,7 +50,7 @@
                     <hr>
 
                     <!-- Post Content -->
-                    <div class="bs-callout bs-callout-info">
+                    <div class="bs-callout bs-callout-info LifeContent">
                     {% autoescape false %}
                         {{ lifeInfo.getLifeContent }}
                     {% endautoescape %}
@@ -171,9 +171,7 @@
 {% endblock %}
 
 {% block LC_javascript %}
-    {#<script type="text/javascript" src="/static/kindEditor/kindeditor-all-min.js"></script>#}
-    {#<script charset="utf-8" src="/static/kindEditor/plugins/code/prettify.js"></script>#}
-    {#<script>#}
-        {#prettyPrint();#}
-    {#</script>#}
+    <script type="text/javascript">
+        $(".LifeContent img").addClass('carousel-inner img-responsive img-rounded');
+    </script>
 {% endblock %}
