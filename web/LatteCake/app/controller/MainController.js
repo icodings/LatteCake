@@ -4,7 +4,8 @@
 Ext.define('LatteCake.controller.MainController', {
     extend: 'Ext.app.Controller',
     requires: [
-        'LatteCake.view.life.LifeController'
+        'LatteCake.view.life.LifeController',
+        'LatteCake.view.learn.LearnController'
     ],
     config: {
         refs: {

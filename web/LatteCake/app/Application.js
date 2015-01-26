@@ -13,7 +13,8 @@ Ext.define('LatteCake.Application', {
         'LatteCake.view.Navigation',
         'LatteCake.view.ContentPanel',
         'LatteCake.view.life.LifeList',
-        'LatteCake.view.life.LifeEditor'
+        'LatteCake.view.life.LifeEditor',
+        'LatteCake.view.learn.LearnEditor'
     ],
 
     requires: [

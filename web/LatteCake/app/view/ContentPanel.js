@@ -17,7 +17,7 @@ Ext.define('LatteCake.view.ContentPanel', {
 
     items: [
         {
-            xtype: 'LifeEditor'
+            xtype: 'LearnEditor'
         }
     ]
 });
