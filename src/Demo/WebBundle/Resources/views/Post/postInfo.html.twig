@@ -1,107 +1,179 @@
 {% extends "DemoWebBundle::default_layout.html.twig" %}
-
+{% block pageTitle %}{{ postInfo.getPostTitle }}{% endblock %}
 {% block pageDescription %}{{ postInfo.getPostTitle }}{% endblock %}
 
 {% block content %}
     <main class="" id="content">
         <div class="container">
-            <div class="row row-margin2">
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">{{ postInfo.getPostTitle }}
+                        <small>作者: <a href="#" target="_blank">{{ postInfo.getUsers.getUserNiceName }}</a>
+                        </small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('main_index') }}">首页</a></li>
+                        <li><a href="{{ url('main_learn', {'page': page}) }}">学无止境</a></li>
+                        <li class="active">文章内容</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- Content Row -->
+            <div class="row">
 
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-9">
+                    <!-- Blog Post -->
+                    <hr>
+                    <!-- Date/Time -->
+                    <p><i class="fa fa-clock-o"></i>{{ postInfo.getPostTime|date('M  d, Y  H:i A') }}</p>
+                    <hr>
+                    <!-- Preview Image -->
+                    <div style="overflow-y: hidden; height: 300px; text-align: center; margin:0 auto;">
+                        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    </div>
+                    <!-- Post Content -->
+                    <div class="bs-callout bs-callout-info LifeContent">
+                        {% autoescape false %}
+                        {{ postInfo.getPostContent }}
+                        {% endautoescape %}
+                    </div>
+                    {#{% if lifeInfo.getLifeSource %}
+                        来自: <a href="{{ lifeInfo.getLifeSource }}" target="_blank">{{ lifeInfo.getLifeSource }}</a>
+                    {% endif %}#}
+                    <hr>
+                    <!-- 多说评论框 start -->
+                    <div class="ds-thread" data-thread-key="{{ postInfo.getId }}" data-title="{{ postInfo.getPostTitle }}" data-url="{{ url('post_postInfo', {'id': postInfo.getId}) }}"></div>
+                    <!-- 多说评论框 end -->
+                    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                    <script type="text/javascript">
+                        var duoshuoQuery = {short_name:"lattecake"};
+                        (function() {
+                            var ds = document.createElement('script');
+                            ds.type = 'text/javascript';ds.async = true;
+                            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                            ds.charset = 'UTF-8';
+                            (document.getElementsByTagName('head')[0]
+                                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                        })();
+                    </script>
+                    <!-- 多说公共JS代码 end -->
+                </div>
 
-                <div class="col-sm-8 blog-main"  role="main">
-                    <div class="bs-docs-section">
-                        <div class="page-header">
-                            <h1 class="blog-title">{{ postInfo.getPostTitle }}</h1>
-                            <p class="blog-post-meta">{{ postInfo.getPostTime|date("Y-m-d H:i:s") }} &nbsp;&nbsp;<a href="#">{{ postInfo.getUsers.getUserNiceName }}</a>
-                                阅读(<strong>{{ postInfo.getPostReadNum }}</strong>)
-                            </p>
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-3">
+
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>搜索</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                        </span>
                         </div>
-                        <div class="bs-callout bs-callout-info">
-                            {{ postInfo.getPostContent }}
+                        <!-- /.input-group -->
+                    </div>
+
+                    <div class="well">
+                        <h4>相关文章</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
+                        <!-- /.row -->
+                    </div>
 
-                        {#<nav>
-                            <ul class="pager">
-                                <li class="previous"><a href="#">&larr; 上一篇</a></li>
-                                <li class="next"><a href="#">下一篇 &rarr;</a></li>
-                            </ul>
-                        </nav>#}
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+                        <h4>栏目最新</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <!-- 多说评论框 start -->
-                        <div class="ds-thread" data-thread-key="{{ postInfo.getId }}" data-title="{{ postInfo.getPostTitle }}" data-url="{{ url('post_postInfo', {'id': postInfo.getId}) }}"></div>
-                        <!-- 多说评论框 end -->
-                        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-                        <script type="text/javascript">
-                            var duoshuoQuery = {short_name:"lattecake"};
-                            (function() {
-                                var ds = document.createElement('script');
-                                ds.type = 'text/javascript';ds.async = true;
-                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                                ds.charset = 'UTF-8';
-                                (document.getElementsByTagName('head')[0]
-                                        || document.getElementsByTagName('body')[0]).appendChild(ds);
-                            })();
-                        </script>
-                        <!-- 多说公共JS代码 end -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
 
+                    <div class="well">
+                        <h4>阅读排行</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="list-unstyled">
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                    <li><a href="#">Category Name</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+
+                    <!-- Side Widget Well -->
+                    <div class="well">
+                        <h4>标题是什么</h4>
+                        <p>说点什么好呢...</p>
                     </div>
 
                 </div>
 
-                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                    <div class="sidebar-module sidebar-module-inset">
-                        <h4>这里放什么好呢？</h4>
-                        <p>Etiam porta <em>sem malesuada magna</em>
-                            mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    </div>
-                    <div class="sidebar-module">
-                        <h4>相关文章</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">March 2014</a></li>
-                            <li><a href="#">February 2014</a></li>
-                            <li><a href="#">January 2014</a></li>
-                            <li><a href="#">December 2013</a></li>
-                            <li><a href="#">November 2013</a></li>
-                            <li><a href="#">October 2013</a></li>
-                            <li><a href="#">September 2013</a></li>
-                            <li><a href="#">August 2013</a></li>
-                            <li><a href="#">July 2013</a></li>
-                            <li><a href="#">June 2013</a></li>
-                            <li><a href="#">May 2013</a></li>
-                            <li><a href="#">April 2013</a></li>
-                        </ol>
-                    </div>
-                    <div class="sidebar-module">
-                        <h4>阅读排行</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">March 2014</a></li>
-                            <li><a href="#">February 2014</a></li>
-                            <li><a href="#">January 2014</a></li>
-                            <li><a href="#">December 2013</a></li>
-                            <li><a href="#">November 2013</a></li>
-                            <li><a href="#">October 2013</a></li>
-                            <li><a href="#">September 2013</a></li>
-                            <li><a href="#">August 2013</a></li>
-                            <li><a href="#">July 2013</a></li>
-                            <li><a href="#">June 2013</a></li>
-                            <li><a href="#">May 2013</a></li>
-                            <li><a href="#">April 2013</a></li>
-                        </ol>
-                    </div>
-                    <div class="sidebar-module">
-                        <h4>其他地方</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Facebook</a></li>
-                        </ol>
-                    </div>
-                </div><!-- /.blog-sidebar -->
-
             </div>
+            <!-- /.row -->
 
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>某一人似曾相识、某一刻似曾经历</p>
+                </div>
+            </div>
 
         </div>
 
     </main>
+{% endblock %}
+{% block LC_javascript %}
+    <script type="text/javascript">
+        $(".container img").addClass('carousel-inner img-responsive img-rounded');
+    </script>
 {% endblock %}

@@ -92,6 +92,7 @@ class PostController extends Controller
         $data = array
         (
             'postInfo' => $postInfo,
+            'page'     => 1,
             'title'    => $postInfo->getPostTitle()
         );
 

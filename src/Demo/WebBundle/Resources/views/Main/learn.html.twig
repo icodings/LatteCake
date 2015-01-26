@@ -2,13 +2,13 @@
 
 {% block pageTitle %}学无止境{% endblock %}
 
-{% block pageDescription %} 我们长路漫漫，只因学无止境。 {% endblock %}
+{% block pageDescription %} 路漫漫而修远兮,吾将上下而求索 {% endblock %}
 
 {% block bannerContainer %}
     <div class="bs-docs-masthead">
         <div class="container">
             <div class="blog-header">
-                <p class="lead blog-description">我们长路漫漫，只因学无止境。</p>
+                <p class="lead blog-description">路漫漫而修远兮，吾将上下而求索</p>
             </div>
         </div>
     </div>
@@ -18,57 +18,109 @@
 
     <main class="" id="content" role="main">
         <div class="container">
-            <div class="row row-margin2">
+            <!-- Page Heading/Breadcrumbs -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">分享是一种博爱的心境，学会分享，就学会了生活。</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ url('main_index') }}">首页</a>
+                        </li>
+                        <li class="active">学无止境</li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
 
-                <div class="col-sm-8 blog-main">
+            <div class="row">
+
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+
+                    <!-- First Blog Post -->
                     {% for item in posts %}
-                        <div class="blog-post">
-                            <a href="{{ path('post_postInfo', {'id': item.getId}) }}">
-                                <h2 class="blog-post-title">{{ item.getPostTitle }}</h2>
-                            </a>
-                            <p class="blog-post-meta">{{ item.getPostTime|date("Y-m-d H:i:s") }} <a href="#">{{ item.getUsers.getUserNiceName }}</a></p>
-                            <div class="bs-callout bs-callout-lighter">
-                                {{ item.getPostDesc }}
+                    <h2>
+                        <a href="{{ path('post_postInfo', {'id': item.getId}) }}">{{ item.getPostTitle }}</a>
+                    </h2>
+                    <p class="lead">
+                        by <a href="#">{{ item.getUsers.getUserNiceName }}</a>
+                    </p>
+                    <p><i class="fa fa-clock-o"></i> {{ item.getPostTime|date('M  d, Y  H:i A') }}</p>
+                    <hr>
+                    <a href="{{ path('post_postInfo', {'id': item.getId}) }}">
+                        <img class="img-responsive img-hover" src="http://placehold.it/900x300" alt="">
+                    </a>
+                    <hr>
+                    <p>
+                        {{ item.getPostDesc }}
+                    </p>
+                    <a class="btn btn-primary" href="{{ path('post_postInfo', {'id': item.getId}) }}">阅读 <i class="fa fa-angle-right"></i></a>
+
+                    <hr>
+                    {% endfor %}
+
+
+                    {#{% if totalPage > 1 %}
+                        <!-- Pager -->
+                        <div class="row">
+                            <ul class="pager">
+                                {% if page > 1 %}
+                                    <li class="previous"><a href="{{ url('main_life', {'page': page -1}) }}">← 上页</a></li>
+                                {% endif %}
+                                <li class="next"><a href="{{ url('main_life', {'page': page + 1}) }}">下页 →</a></li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <!-- /.pager -->
+                    {% endif %}#}
+
+                </div>
+
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4">
+
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>搜索</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                        <!-- /.input-group -->
+                    </div>
+
+                    <!-- Blog Categories Well -->
+                    <div class="well">
+                        <h4>板块</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="{{ url('learn_bootstrap') }}">Bootstrap</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('learn_javascript') }}">JavaScript</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('learn_linux') }}">Linux</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('learn_php') }}">PHP</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('learn_ruby') }}">Ruby</a>
+                                    </li>
+                                </ul>
                             </div>
 
                         </div>
-                    {% endfor %}
-
-                    <nav>
-                        <ul class="pagination">
-                            <li><a href="{{ url('learn_bootstrap', {'page': page - 1 }) }}">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-
-                            <li><a href="{{ url('learn_bootstrap', {'page': page + 1 }) }}">&raquo;</a></li>
-                        </ul>
-                    </nav>
-
-                </div><!-- /.blog-main -->
-
-                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                    <div class="sidebar-module sidebar-module-inset">
-                        <h4>板块</h4>
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="{{ url('learn_bootstrap') }}">Bootstrap</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('learn_javascript') }}">JavaScript</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('learn_linux') }}">Linux</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('learn_php') }}">PHP</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('learn_ruby') }}">Ruby</a>
-                            </li>
-                        </ul>
+                        <!-- /.row -->
                     </div>
-                    <div class="sidebar-module">
-                        <h4>相关文章</h4>
+
+                    <!-- Side Widget Well -->
+                    <div class="well">
+                        <h4>阅读排行</h4>
                         <ol class="list-unstyled">
                             <li><a href="#">March 2014</a></li>
                             <li><a href="#">February 2014</a></li>
@@ -84,17 +136,20 @@
                             <li><a href="#">April 2013</a></li>
                         </ol>
                     </div>
-                    <div class="sidebar-module">
-                        <h4>其他地方</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Facebook</a></li>
-                        </ol>
-                    </div>
-                </div><!-- /.blog-sidebar -->
+
+                </div>
 
             </div>
+            <!-- /.row -->
+
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>某一人似曾相识、某一刻似曾经历</p>
+                </div>
+            </div>
+
         </div>
 
     </main>
