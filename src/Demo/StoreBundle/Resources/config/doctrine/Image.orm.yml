@@ -1,0 +1,26 @@
+Demo\StoreBundle\Entity\Image:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
+
+    fields:
+        image_name:
+            type: string
+        image_path:
+            type: string
+        image_height:
+            type: integer
+        image_action:
+            type: integer
+        image_time:
+            type: integer
+        image_status:
+            type: integer
+        image_relatedId	:
+            type: integer
