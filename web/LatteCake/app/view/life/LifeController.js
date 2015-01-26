@@ -34,5 +34,13 @@ Ext.define('LatteCake.view.life.LifeController', {
                 }
             });
         }
+    },
+
+    clearLifeEdit: function()
+    {
+        var form = this.getView().getForm(),
+            kEditor = this.getView().kEditor;
+        form.reset();
+        kEditor.html('');
     }
 });

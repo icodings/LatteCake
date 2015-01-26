@@ -14,6 +14,17 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     /**
+     * 登录页面
+     * @Route("/login")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function loginAction()
+    {
+
+        return $this->render('DemoAdminBundle:Default:login.html.twig');
+    }
+
+    /**
      * 后台前首页
      * @Route("/index")
      * @return \Symfony\Component\HttpFoundation\Response

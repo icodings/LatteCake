@@ -14,8 +14,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Demo\StoreBundle\Entity\Life;
+use Demo\StoreBundle\Entity\Image;
 use Symfony\Component\Filesystem\Filesystem;
-
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 /**
  * Class LifeController
  * @Route("/admin/life")

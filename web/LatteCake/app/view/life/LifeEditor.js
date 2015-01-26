@@ -121,7 +121,7 @@ Ext.define('LatteCake.view.life.LifeEditor', {
                 {
                     text: '清除',
                     listeners: {
-//                        click: 'submitRegistration'
+                        click: 'clearLifeEdit'
                     }
                 }
             ]
