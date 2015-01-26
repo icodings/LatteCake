@@ -17,6 +17,8 @@ use Symfony\Component\HttpFoundation\File;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
+use ALIOSS;
+
 /**
  * Class ImageController
  * @Route("/admin/image")
@@ -32,6 +34,9 @@ class ImageController extends Controller{
      */
     public function uploadImageAction( Request $request )
     {
+        $OSS_access_id  = $this->container->getParameter('OSS_access_id');
+        $OSS_access_key = $this->container->getParameter('OSS_access_key');
+
         $fileUrl = 'http://demo.lattecake.local/uploads/images/life/';
         if( $request->files )
         {
@@ -50,6 +55,33 @@ class ImageController extends Controller{
                     }
                 }
                 $file->move( $dir,  $name );
+
+                $oss_sdk_service = new ALIOSS($OSS_access_id, $OSS_access_key);
+
+                //设置是否打开curl调试模式
+                $oss_sdk_service->set_debug_mode(TRUE);
+
+                $bucket = 'lattecake';
+                $options = array(
+                    ALIOSS::OSS_CONTENT_TYPE => 'text/xml',
+                );
+
+                $object = 'netbeans-7.1.2-ml-cpp-linux.sh';
+                $file_path = $dir.$name;
+                echo $file_path;die;
+
+                $response = $oss_sdk_service->upload_file_by_file($bucket,$object,$file_path);
+
+                echo '|-----------------------Start---------------------------------------------------------------------------------------------------'."\n";
+                echo '|-Status:' . $response->status . "\n";
+                echo '|-Body:' ."\n";
+                echo $response->body . "\n";
+                echo "|-Header:\n";
+                print_r ( $response->header );
+                echo '-----------------------End-----------------------------------------------------------------------------------------------------'."\n\n";
+
+                die;
+
                 break;
             }
         }
