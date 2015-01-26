@@ -34,12 +34,12 @@ class ImageController extends Controller{
      */
     public function uploadImageAction( Request $request )
     {
-        $OSS_access_id  = $this->container->getParameter('OSS_access_id');
-        $OSS_access_key = $this->container->getParameter('OSS_access_key');
-
         $fileUrl = 'http://demo.lattecake.local/uploads/images/life/';
         if( $request->files )
         {
+            $OSS_access_id  = $this->container->getParameter('OSS_access_id');
+            $OSS_access_key = $this->container->getParameter('OSS_access_key');
+
             $dir = 'E:\website\Git\LatteCake\web\uploads\images\life\\'.date('Y/m/');
             foreach ($request->files as $file)
             {
