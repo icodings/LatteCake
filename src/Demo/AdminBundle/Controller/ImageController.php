@@ -38,8 +38,8 @@ class ImageController extends Controller{
 //        $fileUrl = 'http://uploads.lattecake.local/images/life/';
         if( $request->files )
         {
-            $OSS_access_id  = $this->container->getParameter('OSS_access_id');
-            $OSS_access_key = $this->container->getParameter('OSS_access_key');
+           /* $OSS_access_id  = $this->container->getParameter('OSS_access_id');
+            $OSS_access_key = $this->container->getParameter('OSS_access_key');*/
 
             $dir = './uploads/images/life/'.date('Y/m/');
             foreach ($request->files as $file)
