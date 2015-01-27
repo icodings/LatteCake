@@ -548,11 +548,7 @@ ul.timeline.animated li.active:nth-child(odd) .timeline-content {
     font-weight: 400;
     margin-bottom: 0; }
 */
-body {
-    font-family: "Lato", sans-serif !important;
-    color: #666666;
-    background: #e8e8e8;
-}
+
 [class^="icon-"], [class*=" icon-"] {
     display: inline;
     width: auto;
