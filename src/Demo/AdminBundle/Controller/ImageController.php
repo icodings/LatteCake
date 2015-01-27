@@ -35,6 +35,7 @@ class ImageController extends Controller{
     public function uploadImageAction( Request $request )
     {
         $fileUrl = 'http://uploads.lattecake.com/images/life/';
+//        $fileUrl = 'http://uploads.lattecake.local/images/life/';
         if( $request->files )
         {
             $OSS_access_id  = $this->container->getParameter('OSS_access_id');

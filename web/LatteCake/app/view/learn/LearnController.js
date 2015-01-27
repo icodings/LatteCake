@@ -10,17 +10,17 @@ Ext.define('LatteCake.view.learn.LearnController', {
         var form = this.getView().getForm(),
             kEditor = this.getView().kEditor;
         var subData = form.getValues();
-        subData.lifeContent = kEditor.html();
+        subData.learnContent = kEditor.html();
         if( form.isValid() )
         {
-            if( Ext.isEmpty( subData.lifeContent ))
+            if( Ext.isEmpty( subData.learnContent ))
             {
                 Ext.Msg.alert('失败', '文章内容不能为空！');
                 return;
             }
             form.submit({
                 clientValidation: true,
-                url: baseInfo.baseUrl + 'admin/life/newLife',
+                url: baseInfo.baseUrl + 'admin/learn/newLearn',
                 params: subData,
                 waitMsg: '正在保存...',
                 success: function(form, action) {

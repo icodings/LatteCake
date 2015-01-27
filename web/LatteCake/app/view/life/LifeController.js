@@ -26,8 +26,8 @@ Ext.define('LatteCake.view.life.LifeController', {
                 success: function(form, action) {
                     var response = action.result;
                     Ext.MsgTip.msg('提示', response.message);
-                    form.reset();
-                    kEditor.html('');
+//                    form.reset();
+//                    kEditor.html('');
                 },
                 failure: function(form, action) {
                     Ext.Msg.alert('失败', action.result.message);

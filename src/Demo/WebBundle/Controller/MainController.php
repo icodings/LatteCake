@@ -66,7 +66,6 @@ class MainController extends Controller
         $repository = $this->getDoctrine()
             ->getRepository('DemoStoreBundle:Posts');
         $posts = $repository->createQueryBuilder('p')
-            ->where('p.post_action = 7')
             ->orderBy('p.id', 'DESC')
             ->getQuery()
             ->setMaxResults( self::PAGE_NUM )

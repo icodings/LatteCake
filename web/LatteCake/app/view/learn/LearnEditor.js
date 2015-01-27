@@ -35,7 +35,7 @@ Ext.define('LatteCake.view.learn.LearnEditor', {
                 {
                     allowBlank: false,
                     fieldLabel: '文章标题',
-                    name: 'lifeTitle',
+                    name: 'learnTitle',
                     emptyText: '请输入标题',
                     invalidText: '标题最长64个字符.',
                     maxLength: 32
@@ -43,7 +43,7 @@ Ext.define('LatteCake.view.learn.LearnEditor', {
                     xtype: 'textarea',
                     allowBlank: false,
                     fieldLabel: '文章简介',
-                    name: 'lifeDesc',
+                    name: 'learnDesc',
                     invalidText: '标题最长255个字符.',
                     emptyText: '请输入文章简介',
                     maxLength: 255
@@ -74,13 +74,13 @@ Ext.define('LatteCake.view.learn.LearnEditor', {
                     }
                 },{
                     fieldLabel: '来源',
-                    name: 'lifeSource',
+                    name: 'learnSource',
                     emptyText: '请输入文章来源地址',
                     invalidText: '标题最长128个字符.',
                     maxLength: 128
                 },{
                     fieldLabel: '关键字',
-                    name: 'lifeKeyword',
+                    name: 'llearnKeyword',
                     emptyText: '请输入文章关键字',
                     maxLength: 128
                 }, {
@@ -89,7 +89,7 @@ Ext.define('LatteCake.view.learn.LearnEditor', {
 //                    store: {
 //                        type: 'states'
 //                    },
-                    name: 'lifeTag',
+                    name: 'learnTag',
                     reference: 'locations',
                     displayField: 'state',
                     valueField: 'abbr',
