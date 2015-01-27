@@ -168,7 +168,7 @@ class MoodController extends Controller
             {
                 foreach( $moods as $value )
                 {
-                    $moodTitle = $this->str_limiter($value->getMoodTitle(), 24);
+                    $moodTitle = $this->str_limiter($value->getMoodTitle(), 50);
                     $list[] = array
                     (
                         'moodTime'    => date('H:i A',$value->getMoodTime()),
