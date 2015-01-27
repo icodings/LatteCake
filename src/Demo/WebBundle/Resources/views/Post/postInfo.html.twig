@@ -2,6 +2,10 @@
 {% block pageTitle %}{{ postInfo.getPostTitle }}{% endblock %}
 {% block pageDescription %}{{ postInfo.getPostTitle }}{% endblock %}
 
+{% block LC_stylesheets %}
+    <link rel="stylesheet" href="http://storage.lattecake.com/static/kindEditor/prettify.css"/>
+{% endblock %}
+
 {% block content %}
     <main class="" id="content">
         <div class="container">
@@ -173,7 +177,9 @@
     </main>
 {% endblock %}
 {% block LC_javascript %}
+    <script type="text/javascript" src="http://storage.lattecake.com/static/kindEditor/prettify.js"></script>
     <script type="text/javascript">
+        prettyPrint();
         $(".container img").addClass('carousel-inner img-responsive img-rounded');
     </script>
 {% endblock %}
