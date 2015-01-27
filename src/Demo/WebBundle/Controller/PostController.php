@@ -23,6 +23,51 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PostController extends Controller
 {
+    //@Route("/latestPost/{id}", name="post_latestPost", defaults={"id":1})
+
+    /**
+     *
+     * 获取栏目最新的文章
+     */
+    public function latestPostAction( Request $request )
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('DemoStoreBundle:Posts');
+        $posts = $repository->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->getQuery()
+            ->setMaxResults( 8 )
+            ->getResult();
+
+        $data = array
+        (
+            'posts' => $posts
+        );
+
+        return $this->render('DemoWebBundle:Post:latest.html.twig', $data );
+    }
+
+    /**
+     * 阅读最多
+     * @return Response
+     */
+    public function readMostAction()
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('DemoStoreBundle:Posts');
+        $posts = $repository->createQueryBuilder('p')
+            ->orderBy('p.post_readNum', 'DESC')
+            ->getQuery()
+            ->setMaxResults( 8 )
+            ->getResult();
+
+        $data = array
+        (
+            'posts' => $posts
+        );
+
+        return $this->render('DemoWebBundle:Post:read.html.twig', $data );
+    }
 
     /**
      * 添加文章

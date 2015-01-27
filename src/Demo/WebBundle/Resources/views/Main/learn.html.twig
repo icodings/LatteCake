@@ -39,21 +39,21 @@
                     <!-- First Blog Post -->
                     {% for item in posts %}
                     <h2>
-                        <a href="{{ path('post_postInfo', {'id': item.getId}) }}">{{ item.getPostTitle }}</a>
+                        <a href="{{ url('post_postInfo', {'id': item.getId}) }}">{{ item.getPostTitle }}</a>
                     </h2>
                     <p class="lead">
                         by <a href="#">{{ item.getUsers.getUserNiceName }}</a>
                     </p>
                     <p><i class="fa fa-clock-o"></i> {{ item.getPostTime|date('M  d, Y  H:i A') }}</p>
                     <hr>
-                    <a href="{{ path('post_postInfo', {'id': item.getId}) }}">
+                    <a href="{{ url('post_postInfo', {'id': item.getId}) }}">
                         <img class="img-responsive img-hover" src="http://placehold.it/900x300" alt="">
                     </a>
                     <hr>
                     <p>
                         {{ item.getPostDesc }}
                     </p>
-                    <a class="btn btn-primary" href="{{ path('post_postInfo', {'id': item.getId}) }}">阅读 <i class="fa fa-angle-right"></i></a>
+                    <a class="btn btn-primary" href="{{ url('post_postInfo', {'id': item.getId}) }}">阅读 <i class="fa fa-angle-right"></i></a>
 
                     <hr>
                     {% endfor %}
