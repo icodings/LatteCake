@@ -17,7 +17,21 @@
 {% block content %}
     <main class="" id="content" role="main">
         <div class="container">
-            <div id="timeline-1">
+            <div class="page-title">
+                <span class="label arrowed-in-right label-lg">
+                    <h1>碎言碎语</h1>
+                </span>
+            </div>
+            <ul class="timeline animated" id="mood-list">
+
+
+            </ul>
+            <nav class="text-center">
+                <ul id="pagination" class="pagination pagination-sm">
+
+                </ul>
+            </nav>
+            {#<div id="timeline-1">
                 <div class="row bs-callout">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                         <div class="timeline-container">
@@ -38,7 +52,7 @@
                         </nav>
                     </div>
                 </div>
-            </div>
+            </div>#}
         </div>
     </main>
 {% endblock %}
@@ -50,6 +64,28 @@
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
         <script type="text/javascript">
+
+            /*
+             # =============================================================================
+             #   Timeline animation
+             # =============================================================================
+             */
+
+            /*timelineAnimate = function(elem) {
+                return $(".timeline.animated li").each(function(i) {
+                    var bottom_of_object, bottom_of_window;
+                    bottom_of_object = $(this).position().top + $(this).outerHeight();
+                    bottom_of_window = $(window).scrollTop() + $(window).height();
+                    if (bottom_of_window > bottom_of_object) {
+                        return $(this).addClass("active");
+                    }
+                });
+            };
+            timelineAnimate();
+            $(window).scroll(function() {
+                return timelineAnimate();
+            });*/
+
             var moodList = [];
             $(function(){
                 mood.loadMoods(1);
@@ -91,13 +127,15 @@
                                 var strHtml = '';
                                 $.each(response.data, function(k, item)
                                 {
-                                    strHtml += '<div class="timeline-item clearfix">' +
-                                            '<div class="timeline-info"><i class="timeline-indicator icon-food btn btn-info no-hover"></i></div>' +
-                                            '<div class="widget-box transparent"><div class="widget-header widget-header-small hidden"></div><div class="widget-body">' +
-                                            '<div class="widget-main">' +
-                                            item.moodContent +
-                                            '<div class="pull-right"><i class="icon-time bigger-110"></i>' +
-                                            item.moodTime + '</div></div></div></div></div>';
+                                    strHtml += '<li class="active"><div class="timeline-time">' +
+                                        '<strong>' + item.moodTimeYD + '</strong>' + item.moodTime +
+                                        '</div><div class="timeline-icon"><div class="bg-info"><i class="icon-pencil"></i>' +
+                                        '</div></div><div class="timeline-content">';
+                                    if( item.moodTitle )
+                                    {
+                                        strHtml += '<h2>' + item.moodTitle + '</h2>';
+                                    }
+                                    strHtml += '<p>' + item.moodContent + '</p></div></li>';
                                 });
                                 $('#mood-list').html(strHtml);
                                 moodList[page] = strHtml;

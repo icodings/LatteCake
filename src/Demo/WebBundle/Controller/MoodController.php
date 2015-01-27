@@ -171,11 +171,12 @@ class MoodController extends Controller
                     $moodTitle = $this->str_limiter($value->getMoodTitle(), 24);
                     $list[] = array
                     (
-                        'moodTime'    => date('Y/m/d H:i',$value->getMoodTime()),
+                        'moodTime'    => date('H:i A',$value->getMoodTime()),
+                        'moodTimeYD'  => date('M d',$value->getMoodTime()),
                         'moodContent' => $value->getMoodContent(),
                         'moodAuthor'  => 'Mocha',
                         'moodId'      => $value->getId(),
-                        'moodTitle'   => $moodTitle ? $moodTitle : date('Y-m-d H:i', $value->getMoodTime())
+                        'moodTitle'   => $moodTitle
                     );
                 }
             }
