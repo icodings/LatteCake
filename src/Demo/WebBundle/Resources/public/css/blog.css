@@ -462,12 +462,12 @@ ul.timeline li .timeline-content:after, ul.timeline li .timeline-content:before 
     width: 0;
     height: 0; }
 ul.timeline li .timeline-content:after {
-    top: 38px;
+    top: 18px;
     left: -20px;
     border: 10px solid transparent;
     border-right: 10px solid white; }
 ul.timeline li .timeline-content:before {
-    top: 36px;
+    top: 16px;
     left: -24px;
     border: 12px solid transparent;
     border-right: 12px solid #dddddd; }
