@@ -69,7 +69,7 @@ class ALIOSS{
 	/**
 	 * OSS服务地址
 	 */
-	const DEFAULT_OSS_HOST = 'oss.aliyuncs.com';
+	const DEFAULT_OSS_HOST = 'storage.lattecake.com';
 	//const DEFAULT_OSS_HOST = '10.230.201.90';
 	/**
 	 * 软件名称

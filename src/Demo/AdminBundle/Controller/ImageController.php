@@ -40,7 +40,7 @@ class ImageController extends Controller{
             $OSS_access_id  = $this->container->getParameter('OSS_access_id');
             $OSS_access_key = $this->container->getParameter('OSS_access_key');
 
-            $dir = 'E:\website\Git\LatteCake\web\uploads\images\life\\'.date('Y/m/');
+            $dir = './uploads/images/life/'.date('Y/m/');
             foreach ($request->files as $file)
             {
                 $name = md5( $file->getClientOriginalName(). microtime() ).'.'.$file->guessExtension();
@@ -56,21 +56,24 @@ class ImageController extends Controller{
                 }
                 $file->move( $dir,  $name );
 
-                $oss_sdk_service = new ALIOSS($OSS_access_id, $OSS_access_key);
+                /*$oss_sdk_service = new ALIOSS($OSS_access_id, $OSS_access_key);
 
                 //设置是否打开curl调试模式
                 $oss_sdk_service->set_debug_mode(TRUE);
 
+
                 $bucket = 'lattecake';
                 $options = array(
-                    ALIOSS::OSS_CONTENT_TYPE => 'text/xml',
+                    ALIOSS::OSS_CONTENT_TYPE => 'text/xml'
                 );
+
+                //print_r($oss_sdk_service->get_bucket_acl($bucket, $options));die;
+
 
                 $object = 'netbeans-7.1.2-ml-cpp-linux.sh';
                 $file_path = $dir.$name;
-                echo $file_path;die;
 
-                $response = $oss_sdk_service->upload_file_by_file($bucket,$object,$file_path);
+                $response = $oss_sdk_service->upload_file_by_file($bucket, $name, $file_path);
 
                 echo '|-----------------------Start---------------------------------------------------------------------------------------------------'."\n";
                 echo '|-Status:' . $response->status . "\n";
@@ -80,7 +83,7 @@ class ImageController extends Controller{
                 print_r ( $response->header );
                 echo '-----------------------End-----------------------------------------------------------------------------------------------------'."\n\n";
 
-                die;
+                die;*/
 
                 break;
             }
