@@ -121,20 +121,36 @@
                     <!-- Side Widget Well -->
                     <div class="well">
                         <h4>阅读排行</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">March 2014</a></li>
-                            <li><a href="#">February 2014</a></li>
-                            <li><a href="#">January 2014</a></li>
-                            <li><a href="#">December 2013</a></li>
-                            <li><a href="#">November 2013</a></li>
-                            <li><a href="#">October 2013</a></li>
-                            <li><a href="#">September 2013</a></li>
-                            <li><a href="#">August 2013</a></li>
-                            <li><a href="#">July 2013</a></li>
-                            <li><a href="#">June 2013</a></li>
-                            <li><a href="#">May 2013</a></li>
-                            <li><a href="#">April 2013</a></li>
-                        </ol>
+                        <!-- 多说热评文章 start -->
+                        <div class="ds-top-threads" data-range="monthly" data-num-items="5"></div>
+                        <!-- 多说热评文章 end -->
+                        <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                        <script type="text/javascript">
+                            var duoshuoQuery = {short_name:"lattecake"};
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';ds.async = true;
+                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0]
+                                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+                        </script>
+                        <!-- 多说公共JS代码 end -->
+                        {#<ol class="list-unstyled">#}
+                            {#<li><a href="#">March 2014</a></li>#}
+                            {#<li><a href="#">February 2014</a></li>#}
+                            {#<li><a href="#">January 2014</a></li>#}
+                            {#<li><a href="#">December 2013</a></li>#}
+                            {#<li><a href="#">November 2013</a></li>#}
+                            {#<li><a href="#">October 2013</a></li>#}
+                            {#<li><a href="#">September 2013</a></li>#}
+                            {#<li><a href="#">August 2013</a></li>#}
+                            {#<li><a href="#">July 2013</a></li>#}
+                            {#<li><a href="#">June 2013</a></li>#}
+                            {#<li><a href="#">May 2013</a></li>#}
+                            {#<li><a href="#">April 2013</a></li>#}
+                        {#</ol>#}
                     </div>
 
                 </div>
