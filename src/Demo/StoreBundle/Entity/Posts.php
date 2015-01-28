@@ -248,4 +248,32 @@ class Posts
     {
         return $this->post_readNum;
     }
+    /**
+     * @var string
+     */
+    private $post_image;
+
+
+    /**
+     * Set post_image
+     *
+     * @param string $postImage
+     * @return Posts
+     */
+    public function setPostImage($postImage)
+    {
+        $this->post_image = $postImage;
+
+        return $this;
+    }
+
+    /**
+     * Get post_image
+     *
+     * @return string 
+     */
+    public function getPostImage()
+    {
+        return $this->post_image;
+    }
 }

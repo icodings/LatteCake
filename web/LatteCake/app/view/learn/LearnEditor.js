@@ -40,6 +40,15 @@ Ext.define('LatteCake.view.learn.LearnEditor', {
                     invalidText: '标题最长64个字符.',
                     maxLength: 32
                 },{
+                    xtype: 'filefield',
+                    emptyText: '',
+                    fieldLabel: '文章图片',
+                    name: 'learnImage',
+                    buttonText: '',
+                    buttonConfig: {
+                        iconCls: 'upload-icon'
+                    }
+                },{
                     xtype: 'textarea',
                     allowBlank: false,
                     fieldLabel: '文章简介',
