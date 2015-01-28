@@ -47,7 +47,7 @@
                     <p><i class="fa fa-clock-o"></i> {{ item.getPostTime|date('M  d, Y  H:i A') }}</p>
                     <hr>
                     <a href="{{ url('post_postInfo', {'id': item.getId}) }}">
-                        <img class="img-responsive img-hover" src="{{ uploadsUrl }}{{ postInfo.getPostTime|date('Y/m/') }}{{ postInfo.getPostImage }}" alt="">
+                        <img class="img-responsive img-hover" src="{{ uploadsUrl }}{{ postInfo.getPostTime|date('Y/m/') }}{{ item.getPostImage }}" alt="">
                     </a>
                     <hr>
                     <p>
