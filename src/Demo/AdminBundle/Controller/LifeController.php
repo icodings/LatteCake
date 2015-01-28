@@ -136,15 +136,4 @@ class LifeController extends Controller
 
         return new JsonResponse($response);
     }
-
-    /**
-     * 上传图片
-     * @Route("/uploadImage")
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function uploadImageAction( Request $request )
-    {
-        return new JsonResponse();
-    }
 } 
