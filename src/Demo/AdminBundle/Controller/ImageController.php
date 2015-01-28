@@ -34,8 +34,8 @@ class ImageController extends Controller{
      */
     public function uploadImageAction( Request $request )
     {
-//        $fileUrl = $this->container->getParameter('qiNiuUrl');
-        $fileUrl = 'http://demo.lattecake.local/';
+        $fileUrl = $this->container->getParameter('qiNiuUrl');
+//        $fileUrl = 'http://demo.lattecake.local/';
         if( $request->files )
         {
             $dir = './uploads/images/'.date('Y/m/');
