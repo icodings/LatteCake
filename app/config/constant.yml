@@ -1,3 +1,4 @@
 parameters:
-    OSS_access_id: test
-    OSS_access_key: test
+#    OSS_access_id:
+#    OSS_access_key:
+    qiNiuUrl: http://7u2kft.com1.z0.glb.clouddn.com/
