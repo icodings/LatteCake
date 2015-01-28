@@ -17,6 +17,7 @@ use Demo\StoreBundle\Entity\Life;
 use Demo\StoreBundle\Entity\Image;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+
 /**
  * Class LifeController
  * @Route("/admin/life")
@@ -44,66 +45,48 @@ class LifeController extends Controller
     public function newLifeAction( Request $request )
     {
         $lifeTitle   = $request->get('lifeTitle');
-        $lifeImage   = $request->files;
         $lifeDesc    = $request->get('lifeDesc');
         $lifeContent = $request->get('lifeContent');
         $lifeSource  = $request->get('lifeSource');
         $lifeKeyword = $request->get('lifeKeyword');
         $lifeTag     = $request->get('lifeTag');
 
+        $response = [
+            'success'   => true,
+            'errorCode' => '',
+            'message'   => '操作成功',
+            'data'      => ''
+        ];
 
         if( !$request->files )
         {
-            die;
+            $response['success'] = false;
+            $response['message'] = '图片不能为空！';
+            return new JsonResponse($response);
         }
-        $fileUrl = 'http://demo.lattecake.local/uploads/images/life/';
-        $dir = 'E:\website\Git\LatteCake\web\uploads\images\life\\'.date('Y/m/');
-        foreach ($request->files as $file)
+        $imageName = '';
+//        $fileUrl = $this->container->getParameter('qiNiuUrl');
+        if( $request->files )
         {
-            $name = md5( $file->getClientOriginalName(). microtime() ).'.'.$file->guessExtension();
-            $fileUrl = $fileUrl.date('Y/m/').$name;
-            $fs = new Filesystem();
-            if( !$fs->exists( $dir ) )
+            $dir = './uploads/images/'.date('Y/m/');
+            foreach ($request->files as $file)
             {
-                try {
-                    $fs->mkdir( $dir );
-                } catch (IOExceptionInterface $e) {
-                    echo "An error occurred while creating your directory at ".$e->getPath();
+                $name = md5( $file->getClientOriginalName(). microtime() ).'.'.$file->guessExtension();
+//                $fileUrl = $fileUrl.date('Y/m/').$name;
+                $fs = new Filesystem();
+                if( !$fs->exists( $dir ) )
+                {
+                    try {
+                        $fs->mkdir( $dir );
+                    } catch (IOExceptionInterface $e) {
+                        echo "An error occurred while creating your directory at ".$e->getPath();
+                    }
                 }
-            }
-            $file->move( $dir,  $name );
-            break;
-        }
-
-/*        $fileSystem = $this->get('');
-print_r( $fileSystem );die;
-print_r($fileSystem->getClientOriginalName());die;
-
-        $dir = $this->get('kernel')->getRootDir() . '/../web/';
-
-
-        $sub_path = md5( $fileObject->getClientOriginalName() . microtime() );
-
-        $dir .= '/' . $sub_path . '/';
-        $fs = new Filesystem();
-
-        if( !$fs->exists( $dir ) )
-        {
-            try {
-                $fs->mkdir( $dir );
-            } catch (IOExceptionInterface $e) {
-                echo "An error occurred while creating your directory at ".$e->getPath();
+                $imageName = $name;
+                $file->move( $dir,  $name );
+                break;
             }
         }
-
-        $file = str_replace( 'image/' , mt_rand(1,99) .'.' , $fileObject->getMimeType() );
-
-        $fileObject->move( $dir , $file );
-
-        return '/'.$path.'/' . $sub_path . '/' . $file;
-*/
-
-
         /*$filesystem = new Filesystem();
 
         $filesystem->copy($originFile, $targetFile, $override = false);
@@ -134,28 +117,23 @@ print_r($fileSystem->getClientOriginalName());die;
 
         if( !empty( $lifeContent ) && !empty($lifeDesc) && !empty( $lifeTitle ))
         {
-//            $life = new Life();
-//
-//            $em = $this->getDoctrine()->getManager();
-//
-//            $life->setLifeTitle($lifeTitle);
-//            $life->setLifeRead(1);
-//            $life->setLifeAuthor(1);
-//            $life->setLifeContent($lifeContent);
-//            $life->setLifeDesc($lifeDesc);
-//            $life->setLifeImage('http://pic3.zhimg.com/236ab287d61dc6b172a0a6b0dc3295de.jpg');
-//            $life->setLifeLastTime(time());
-//            $life->setLifeTime(time());
-//            $life->setLifeSource($lifeSource);
-//            $em->persist($life);
-//            $em->flush();
+            $life = new Life();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $life->setLifeTitle($lifeTitle);
+            $life->setLifeRead(1);
+            $life->setLifeAuthor(1);
+            $life->setLifeContent($lifeContent);
+            $life->setLifeDesc($lifeDesc);
+            $life->setLifeImage($imageName);
+            $life->setLifeLastTime(time());
+            $life->setLifeTime(time());
+            $life->setLifeSource($lifeSource);
+            $em->persist($life);
+            $em->flush();
         }
-        $response = [
-            'success'   => true,
-            'errorCode' => '',
-            'message'   => '操作成功',
-            'data'      => $lifeContent
-        ];
+
         return new JsonResponse($response);
     }
 

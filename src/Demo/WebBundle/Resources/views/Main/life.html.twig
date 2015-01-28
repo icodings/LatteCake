@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-5" style="height: 240px; overflow-y: hidden;">
                         <a href="{{ url('life_lifeInfo', {'id': item.lId, 'page': page}) }}">
-                            <img class="img-responsive img-hover" src="{{ item.life_image }}" alt=""/>
+                            <img class="img-responsive img-hover" src="{{ uploadsUrl }}{{ item.life_time|date('Y/m/') }}{{ item.life_image }}" alt=""/>
                         </a>
                     </div>
                     <div class="col-md-6">

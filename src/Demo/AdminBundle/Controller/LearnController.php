@@ -41,7 +41,6 @@ class LearnController extends Controller
         $posts->setPostReadNum(1);
         $posts->setPostAction(0);
 
-
         /*$form = $this->createFormBuilder( $posts )
             ->add('learnTitle', 'text')
             ->add('learnContent', 'text')
